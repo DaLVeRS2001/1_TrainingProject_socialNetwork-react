@@ -9,7 +9,7 @@ const Profile = () => {
 				ava + description
 			</div>
 			<div>
-				my posts
+				my postssss
 				<div>
 					new post
 				</div>
