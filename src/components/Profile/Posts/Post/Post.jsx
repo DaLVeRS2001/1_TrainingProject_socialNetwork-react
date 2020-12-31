@@ -3,8 +3,8 @@ import s from "./Post.module.scss";
 
 const Post = (props) => {
 	return (
-					<div className={s.item}>
-						<img src={props.scr} alt=""/>
+					<div id={props.id} className={s.item}>
+						<img src={props.src} alt=""/>
 						<span>{props.message}</span>
 					</div>
 	)

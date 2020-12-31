@@ -9,14 +9,15 @@ import {Route} from "react-router-dom";
 
 
 
-const App = () => {
+
+const App = (props) => {
   return (
     <div className="app-wrapper">
       <Header/>
       <Sidebar/>
       <div className='app-wrapper-content'>
-        <Route path='/dialogs' component={Dialogs} />
-        <Route path='/Profile' component={Profile} />
+        <Route path='/dialogs' render={()=> <Dialogs dialogsPage={props.state.dialogsPage}/>} />
+        <Route path='/profile' render={()=> <Profile profilePage={props.state.profilePage}/>} />
       </div>
     </div>
 )
