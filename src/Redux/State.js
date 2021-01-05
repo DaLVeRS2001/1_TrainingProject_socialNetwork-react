@@ -1,3 +1,6 @@
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
+
 let store = {
 	_state: {
 		profilePage: {
@@ -34,36 +37,33 @@ let store = {
 				{id: 3, userMessage: 'yo'},
 				{id: 4, userMessage: 'good morning'},
 				{id: 5, userMessage: "what's up"}
-			]
+			],
+			newMessageText: ''
 		},
+
 	},
 	getState() {
 		return this._state
 	},
 	_callSubscriber() {},
-	addPost() {
-		if (this._state.profilePage.newPostText === '') {
-			return null
-		} else {
-			let id = this._state.profilePage.postsData.length + 1
-			let newPost = {
-				id: id,
-				src: 'https://cdn.shopify.com/s/files/1/1804/6139/products/The_Purge-Balck_Base_Mask_1200x1200.jpg?v=1567392045',
-				message: this._state.profilePage.newPostText
-			}
-			this._state.profilePage.postsData.push(newPost)
-			this._state.profilePage.newPostText = ''
-			this._callSubscriber()
-		}
-	},
-	updatePostText(newText) {
-		this._state.profilePage.newPostText = newText
-		this._callSubscriber()
-	},
 	subscribe(observer) {
 		this._callSubscriber = observer
+	},
+	dispatch(action){
+		this._state.profilePage = profileReducer(this._state.profilePage, action)
+		this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+
+		this._callSubscriber()
+
 	}
 }
+
+
+
+
+
+
+
 
 
 export default store
