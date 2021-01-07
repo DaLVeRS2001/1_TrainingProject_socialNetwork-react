@@ -11,16 +11,14 @@ const App = (props) => {
   return (
     <div className="app-wrapper">
       <Header/>
+      refactor
       <Sidebar/>
       <div className='app-wrapper-content'>
         <Route path='/dialogs' render={()=> <Dialogs
-          state={props.state.dialogsReducer}
-          dispatch={props.dispatch}
+          state={props.store.getState().dialogsReducer.dialogsData}
+          store={props.store}
         />}/>
-        <Route path='/profile' render={()=> <Profile
-          state={props.state.profileReducer}
-          dispatch={props.dispatch}
-        />}/>
+        <Route path='/profile' render={()=> <Profile store={props.store}/> } />
       </div>
     </div>
 )

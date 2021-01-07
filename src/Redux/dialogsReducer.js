@@ -24,7 +24,6 @@ const dialogsReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case SEND_MESSAGE:
 			if (state.newMessageText === '') {
-				return null
 			} else {
 				let id = state.messagesData.length + 1
 				let newMessage = {

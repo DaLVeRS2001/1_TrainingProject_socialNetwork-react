@@ -26,7 +26,6 @@ const profileReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_POST:
 			if (state.newPostText === '') {
-				return null
 			} else {
 				let id = state.postsData.length + 1
 				let newPost = {
