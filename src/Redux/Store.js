@@ -38,7 +38,7 @@ let store = {
 				{id: 4, userMessage: 'good morning'},
 				{id: 5, userMessage: "what's up"}
 			],
-			newMessageText: ''
+			newMessageText: 'f'
 		},
 
 	},

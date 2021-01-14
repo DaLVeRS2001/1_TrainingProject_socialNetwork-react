@@ -25,24 +25,27 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_POST:
-			if (state.newPostText === '') {
-			} else {
+			if (state.newPostText === '') {}
+
 				let id = state.postsData.length + 1
 				let newPost = {
 					id: id,
 					src: 'https://cdn.shopify.com/s/files/1/1804/6139/products/The_Purge-Balck_Base_Mask_1200x1200.jpg?v=1567392045',
 					message: state.newPostText
 				}
-				state.postsData.push(newPost)
-				state.newPostText = ''
+
+			return {
+				...state,
+				postsData: [...state.postsData, newPost],
+				newPostText: ''
 			}
 
-			return state;
 
 		case UPDATE_POST_TEXT:
-			state.newPostText = action.newText
-
-			return state;
+			return {
+				...state,
+				newPostText: action.newText
+			}
 
 		default:
 			return state;
