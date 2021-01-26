@@ -1,0 +1,50 @@
+// @include sizing($w,$h,$b,$br);
+@mixin sizing($w,$h,$b,$br){
+  width: $w;
+  height: $h;
+  border-radius: $br;
+  border: $b;
+}
+.user{
+  display: flex;
+  margin-left: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+
+  .avaBtn{
+    margin-right: 10px;
+
+    img{
+      @include sizing(32px, 32px,0,50%);
+    }
+    button{
+      width: 70px;
+    }
+  }
+
+  .userInfo{
+    display: flex;
+    vertical-align: bottom;
+    justify-content: space-between;
+    padding: 2px 5px 2px 5px;
+    @include sizing(65%,null,1px solid #000000,5px);
+
+    .mainInfo{
+      position: relative;
+
+      .name{}
+      .status{
+        position: absolute;
+        bottom: 0;
+      }
+    }
+
+    .location{
+      .country{
+        padding-bottom: 4px;
+      }
+      .city{}
+    }
+  }
+
+}

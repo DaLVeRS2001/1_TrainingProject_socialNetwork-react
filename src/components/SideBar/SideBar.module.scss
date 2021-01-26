@@ -2,12 +2,12 @@
   background: yellow;
   grid-area: n;
 
-  .item a{
+  .item a {
     text-decoration: none;
     color: black;
   }
 
-  .active{
+  a.active {
     color: gold;
   }
 
