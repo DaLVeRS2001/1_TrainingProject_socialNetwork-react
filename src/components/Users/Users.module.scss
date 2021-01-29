@@ -1,7 +1,18 @@
 .usersBlock{
-
+  position: relative;
+  min-height: 500px;
   .pageSwitches{
 
+    span{
+      position: relative;
+      border: 1px solid black;
+      border-radius: 5px;
+      font-size: 10px;
+      margin-left: 2px;
+      padding: 2px;
+      font-weight: bold;
+      background: yellow;
+    }
     .activePage{
       font-weight: bold;
     }
