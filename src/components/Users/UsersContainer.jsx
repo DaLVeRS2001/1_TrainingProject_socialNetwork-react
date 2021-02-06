@@ -12,6 +12,7 @@ import React from "react";
 
 
 
+
 class UsersContainer extends React.Component {
 	componentDidMount() {
 		this.props.usersData.length = 0
@@ -50,6 +51,7 @@ class UsersContainer extends React.Component {
 		}
 	}
 
+
 	render() {
 		return <>
 			<Users
@@ -84,5 +86,5 @@ let mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps, {
-	addUsers, toggleFollow, setCurrentPage, setTotalUsersCount, toggleFetching
+	addUsers, toggleFollow, setCurrentPage, setTotalUsersCount, toggleFetching,
 })(UsersContainer)

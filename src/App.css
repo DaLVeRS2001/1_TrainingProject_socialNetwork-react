@@ -8,6 +8,7 @@
 }
 
 .app-wrapper-content{
+  position: relative;
   grid-area: c;
   background: blue;
   padding: 10px;

@@ -1,15 +1,25 @@
 import React from "react";
 import s from "./ProfileInfo.module.scss";
+import userImage from '../../../assets/images/userImage.png'
+import Preloader from "../../common/Preloader/Preloader";
 
+const ProfileInfo = (props) => {
+	const prof = props.profile
 
-const ProfileInfo = () => {
-	return (
-		<div>
+	if (!props.profile){
+		return <Preloader/>
+	}
+
+		return (
+		<div className={s.profileInfoBlock}>
 			<div>
-				<img src="https://cdn.wallpapersafari.com/46/46/40fySb.jpg" alt=""/>
+				<img src={prof.photos.small != null ? prof.photos.small : userImage} alt="Photo Wasn't Loaded"/>
 			</div>
-			<div className={s.disctiptionBlock}>
-				ava + description
+			<div className={s.descriptionBlock}>
+				<div className={s.aboutMe}>
+					{prof.fullName}
+					{prof.aboutMe}
+				</div>
 			</div>
 		</div>
 	)

@@ -11,13 +11,17 @@ const Users = (props) => {
 				{props.isFetching && <Preloader/>}
 				Users
 				<div className={s.pageSwitches}>
-					<button onClick={()=> props.onPrevPageChanged(props.currentPage)} className={s.prevPageBtn}>Prev Page</button>
-					<button onClick={()=> props.onNextPageChanged(props.currentPage, pageCount)} className={s.nextPageBtn}>Next Page</button>
+					<button onClick={()=> props.onPrevPageChanged(props.currentPage)} className={s.prevPageBtn}>
+						Prev Page
+					</button>
+					<button onClick={()=> props.onNextPageChanged(props.currentPage, pageCount)} className={s.nextPageBtn}>
+						Next Page
+					</button>
 					<span>{props.currentPage} OF {pageCount}</span>
 				</div>
 
 				<div className={s.users}>
-					{props.usersData.map(u => <User userData={u} toggleFollow={props.toggleFollow}/>)}
+					{props.usersData.map(u => <User  userData={u} toggleFollow={props.toggleFollow}/>)}
 				</div>
 
 			</div>
