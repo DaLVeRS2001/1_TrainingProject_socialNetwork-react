@@ -17,7 +17,9 @@ class UsersContainer extends React.Component {
 	componentDidMount() {
 		this.props.usersData.length = 0
 		this.props.toggleFetching(true)
-		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.count}`)
+		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.count}`, {
+			withCredentials: true
+		})
 			.then(response => {
 				this.props.toggleFetching(false)
 				this.props.addUsers(response.data.items)
@@ -30,7 +32,9 @@ class UsersContainer extends React.Component {
 			this.props.setCurrentPage(--pageNumber)
 			this.props.usersData.length = 0
 			this.props.toggleFetching(true)
-			axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.count}`)
+			axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.count}`, {
+				withCredentials: true
+			})
 				.then(response => {
 					this.props.toggleFetching(false)
 					this.props.addUsers(response.data.items)
@@ -43,7 +47,9 @@ class UsersContainer extends React.Component {
 			this.props.setCurrentPage(++pageNumber)
 			this.props.usersData.length = 0
 			this.props.toggleFetching(true)
-			axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.count}`)
+			axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.count}`, {
+				withCredentials: true
+			})
 				.then(response => {
 					this.props.toggleFetching(false)
 					this.props.addUsers(response.data.items)

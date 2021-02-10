@@ -26,7 +26,7 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state)=> {
 	return {
-		profile: state.profileReducer.profile
+		profile: state.profileReducer.profile,
 	}
 }
 
