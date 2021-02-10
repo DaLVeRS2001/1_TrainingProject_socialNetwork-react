@@ -1,6 +1,8 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
+const SET_OWN_PROFILE = 'SET_OWN_PROFILE'
+const CLEAR_PROFILE = 'CLEAR_PROFILE'
 
 let initialState = {
 	postsData: [
@@ -22,6 +24,7 @@ let initialState = {
 	],
 	newPostText: '',
 	profile: null,
+	isFetching: false
 
 }
 
@@ -55,6 +58,11 @@ const profileReducer = (state = initialState, action) => {
 				...state,
 				profile: action.profile
 			}
+		case CLEAR_PROFILE:
+			return {
+				...state,
+				profile: null,
+			}
 
 		default:
 			return state;
@@ -67,5 +75,6 @@ const profileReducer = (state = initialState, action) => {
 export const addPost = () => ({type: ADD_POST})
 export const updatePostText = (text) => ({type: UPDATE_POST_TEXT, newText: text})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+export const clearProfile = () => ({type: CLEAR_PROFILE})
 
 export default profileReducer

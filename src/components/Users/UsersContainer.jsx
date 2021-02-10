@@ -7,23 +7,20 @@ import {
 	toggleFetching,
 	toggleFollow
 } from "../../Redux/usersReducer";
-import * as axios from "axios";
 import React from "react";
-
-
+import usersApi from "../../api/usersApi";
 
 
 class UsersContainer extends React.Component {
 	componentDidMount() {
 		this.props.usersData.length = 0
 		this.props.toggleFetching(true)
-		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.count}`, {
-			withCredentials: true
-		})
+
+		usersApi.setUsers(this.props.currentPage, this.props.count)
 			.then(response => {
 				this.props.toggleFetching(false)
-				this.props.addUsers(response.data.items)
-				this.props.setTotalUsersCount(response.data.totalCount)
+				this.props.addUsers(response.items)
+				this.props.setTotalUsersCount(response.totalCount)
 			})
 	}
 
@@ -32,12 +29,11 @@ class UsersContainer extends React.Component {
 			this.props.setCurrentPage(--pageNumber)
 			this.props.usersData.length = 0
 			this.props.toggleFetching(true)
-			axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.count}`, {
-				withCredentials: true
-			})
+
+			usersApi.setPrevUsers(pageNumber, this.props.count)
 				.then(response => {
 					this.props.toggleFetching(false)
-					this.props.addUsers(response.data.items)
+					this.props.addUsers(response.items)
 				})
 		}
 	}
@@ -47,23 +43,41 @@ class UsersContainer extends React.Component {
 			this.props.setCurrentPage(++pageNumber)
 			this.props.usersData.length = 0
 			this.props.toggleFetching(true)
-			axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.count}`, {
-				withCredentials: true
-			})
+
+			usersApi.setNextUsers(pageNumber, this.props.count)
 				.then(response => {
 					this.props.toggleFetching(false)
-					this.props.addUsers(response.data.items)
+					this.props.addUsers(response.items)
 				})
 		}
+	}
+
+	 onUserFollow = (id) => {
+		usersApi.followUser(id)
+			.then(response => {
+				if (response.resultCode === 0) {
+					this.props.toggleFollow(id)
+				}
+			})
+	}
+
+	 onUserUnfollow = (id) => {
+		usersApi.unfollowUser(id)
+			.then(response => {
+				if (response.resultCode === 0) {
+					this.props.toggleFollow(id)
+				}
+			})
 	}
 
 
 	render() {
 		return <>
 			<Users
+				onUserFollow={this.onUserFollow}
+				onUserUnfollow={this.onUserUnfollow}
 				totalUsersCount={this.props.totalUsersCount}
 				currentPage={this.props.currentPage}
-				toggleFollow={this.props.toggleFollow}
 				onPrevPageChanged={this.onPrevPageChanged}
 				onNextPageChanged={this.onNextPageChanged}
 				count={this.props.count}
@@ -72,7 +86,6 @@ class UsersContainer extends React.Component {
 			/>
 		</>
 	}
-
 }
 
 

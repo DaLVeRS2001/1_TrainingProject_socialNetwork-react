@@ -2,46 +2,18 @@ import React from "react";
 import s from './User.module.scss'
 import userImage from '../../../assets/images/userImage.png'
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
-
-
 
 const User = (props) => {
-		let ud = props.userData
+	let ud = props.userData
 
-	function onUserFolllow(e) {
-		axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${ud.id}`, {}, {
-			withCredentials: true,
-			headers: {
-				'API-KEY': '21c5f7a8-45fb-489a-a4be-edcd3ba5e76d'
-			}
-		})
-			.then(response => {
-				if (response.data.resultCode == 0) {
-					props.toggleFollow(ud.id)
-				}else{
-					alert('ошибка в запросе')
-				}
-			})
+	const onUserUnfollow = () => {
+		props.onUserUnfollow(ud.id)
+	}
+	const onUserFollow = () => {
+		props.onUserFollow(ud.id)
 	}
 
-	function onUserUnfollow(e) {
-		axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${ud.id}`, {
-			withCredentials: true,
-			headers: {
-				'API-KEY': '21c5f7a8-45fb-489a-a4be-edcd3ba5e76d'
-			}
-		})
-			.then(response => {
-				if (response.data.resultCode === 0) {
-					props.toggleFollow(ud.id)
-				}else{
-					alert('ошибка в запросе')
-				}
-			})
-	}
-
-		return (
+	return (
 			<div id={ud.id} className={s.user} key={ud.id}>
 
 				<div className={s.avaBtn}>
@@ -52,7 +24,7 @@ const User = (props) => {
 						/>
 					</NavLink><br/>
 
-					<button onClick={ud.followed ? onUserUnfollow : onUserFolllow}>
+					<button onClick={ud.followed ? onUserUnfollow : onUserFollow}>
 						{ud.followed ? 'Unfollow' : 'Follow'}
 					</button>
 				</div>
