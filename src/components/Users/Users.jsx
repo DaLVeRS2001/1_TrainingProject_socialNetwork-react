@@ -27,6 +27,7 @@ const Users = (props) => {
 						onUserUnfollow={props.onUserUnfollow}
 						userData={u}
 						toggleFollow={props.toggleFollow}
+						followingInProgress={props.followingInProgress}
 					/>)}
 				</div>
 

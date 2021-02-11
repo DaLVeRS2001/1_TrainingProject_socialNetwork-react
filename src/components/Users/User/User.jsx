@@ -24,7 +24,7 @@ const User = (props) => {
 						/>
 					</NavLink><br/>
 
-					<button onClick={ud.followed ? onUserUnfollow : onUserFollow}>
+					<button disabled={props.followingInProgress.some(id=> id === ud.id)} onClick={ud.followed ? onUserUnfollow : onUserFollow}>
 						{ud.followed ? 'Unfollow' : 'Follow'}
 					</button>
 				</div>
