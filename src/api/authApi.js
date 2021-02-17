@@ -1,7 +1,7 @@
 import instance from "./instanceApiSetting/instanceApi";
 
 const authApi = {
-	setAuthUserData(){
+	getAuthUserData(){
 		return instance.get('auth/me')
 			.then(response=> response.data)
 	}

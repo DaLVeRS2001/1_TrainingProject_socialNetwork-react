@@ -1,8 +1,10 @@
-const ADD_POST = 'ADD-POST'
-const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT'
-const SET_USER_PROFILE = 'SET_USER_PROFILE'
-const SET_OWN_PROFILE = 'SET_OWN_PROFILE'
-const CLEAR_PROFILE = 'CLEAR_PROFILE'
+import profileApi from "../api/profileApi";
+
+const ADD_POST = 'ADD-POST',
+	UPDATE_POST_TEXT = 'UPDATE-POST-TEXT',
+	SET_USER_PROFILE = 'SET_USER_PROFILE',
+	CLEAR_PROFILE = 'CLEAR_PROFILE',
+	TOGGLE_FETCHING = 'TOGGLE_FETCHING';
 
 let initialState = {
 	postsData: [
@@ -63,6 +65,11 @@ const profileReducer = (state = initialState, action) => {
 				...state,
 				profile: null,
 			}
+		case TOGGLE_FETCHING:
+			return {
+				...state,
+				isFetching: action.isFetching
+			}
 
 		default:
 			return state;
@@ -72,9 +79,41 @@ const profileReducer = (state = initialState, action) => {
 }
 
 
+//                                       ACTION CREATORS
 export const addPost = () => ({type: ADD_POST})
 export const updatePostText = (text) => ({type: UPDATE_POST_TEXT, newText: text})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const clearProfile = () => ({type: CLEAR_PROFILE})
+export const toggleFetching = (isFetching) => ({type: TOGGLE_FETCHING, isFetching})
+
+
+//                                           THUNKS
+
+export const setProfile = (userId, profile) => (dispatch) => {
+
+	const onUserProfileReceived = (profile) => {
+		dispatch(setUserProfile(profile))
+	}
+
+	if (!userId) {
+		dispatch(clearProfile())
+		profileApi.getOwnId().then(provideOwnId)
+
+		function provideOwnId(ownId) {
+			dispatch(toggleFetching(true))
+			profileApi.getUserProfile(ownId)
+				.then(onUserProfileReceived)
+			dispatch(toggleFetching(false))
+		}
+	} else {
+		dispatch(clearProfile())
+		dispatch(toggleFetching(true))
+		profileApi.getUserProfile(userId)
+			.then(response => {
+				onUserProfileReceived(response)
+				dispatch(toggleFetching(false))
+			})
+	}
+}
 
 export default profileReducer

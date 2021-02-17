@@ -1,7 +1,7 @@
 import instance from "./instanceApiSetting/instanceApi";
 
 const profileApi = {
-	setUserProfile(id){
+	getUserProfile(id){
 		return instance.get(`profile/${id}`)
 			.then(response=> response.data)
 	},

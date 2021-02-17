@@ -1,14 +1,16 @@
 import React from "react";
+import {Redirect} from "react-router-dom";
 import s from './Dialogs.module.scss'
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 
 
+
 const Dialogs = (props) => {
 	const dp = props.dialogsPage
 
-	const onSendMessage = () => {
-		props.onSendMessage()
+	const onMessageSend = () => {
+		props.onMessageSend()
 	}
 
 	const onMessageTextChange = (e) => {
@@ -28,13 +30,13 @@ const Dialogs = (props) => {
 	let messageItems =
 		dp.messagesData.map(message =>
 			<Message
-				key={message.toString()}
 				id={message.id}
 				userMessage={message.userMessage}
 				key={message.id}
 			/>
 		)
 
+	if(!props.isAuth) return <Redirect to='/login'/>
 
 	return (
 		<div className={s.dialogs}>
@@ -49,7 +51,7 @@ const Dialogs = (props) => {
 				</div>
 				<div className={s.newMessage}>
 					<textarea onChange={onMessageTextChange}  value={dp.newMessageText}/><br/>
-					<button onClick={onSendMessage}>Send</button>
+					<button onClick={onMessageSend}>Send</button>
 				</div>
 			</div>
 

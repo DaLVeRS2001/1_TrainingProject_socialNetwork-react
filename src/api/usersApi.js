@@ -1,17 +1,17 @@
 import instance from "./instanceApiSetting/instanceApi";
 
 const usersApi = {
-	setUsers(currentPage, count) {
+	getUsers(currentPage, count) {
 		return instance.get(`users?page=${currentPage}&count=${count}`)
 			.then(response => response.data)
 	},
 
-	setNextUsers(pageNumber, count) {
+	getNextUsers(pageNumber, count) {
 		return instance.get(`users?page=${pageNumber}&count=${count}`)
 			.then(response => response.data)
 	},
 
-	setPrevUsers(pageNumber, count) {
+	getPrevUsers(pageNumber, count) {
 		return instance.get(`users?page=${pageNumber}&count=${count}`)
 			.then(response => response.data)
 	},

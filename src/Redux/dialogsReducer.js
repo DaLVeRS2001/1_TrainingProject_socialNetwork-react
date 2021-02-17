@@ -50,9 +50,13 @@ const dialogsReducer = (state = initialState, action) => {
 	return state
 }
 
+
+//                                       ACTION CREATORS
 export const sendMessageActionCreator = () => ({type: SEND_MESSAGE})
 export const updateMessageTextActionCreator = (text) =>
 	({type: UPDATE_MESSAGE_TEXT, newMessageText: text})
 
+
+//                                           THUNKS
 
 export default dialogsReducer

@@ -1,77 +1,32 @@
 import Users from "./Users";
 import {connect} from "react-redux";
 import {
-	addUsers,
-	setCurrentPage,
-	setTotalUsersCount,
-	toggleFetching,
-	toggleFollow, toggleFollowingProgress
+	followUser, unfollowUser,
+	setNextUsers, setPrevUsers,
+	setUsers
 } from "../../Redux/usersReducer";
 import React from "react";
-import usersApi from "../../api/usersApi";
 
 
 class UsersContainer extends React.Component {
 	componentDidMount() {
-		this.props.usersData.length = 0
-		this.props.toggleFetching(true)
-
-		usersApi.setUsers(this.props.currentPage, this.props.count)
-			.then(response => {
-				this.props.toggleFetching(false)
-				this.props.addUsers(response.items)
-				this.props.setTotalUsersCount(response.totalCount)
-			})
+		this.props.setUsers(this.props.currentPage, this.props.count)
 	}
 
 	onPrevPageChanged = (pageNumber) => {
-		if (pageNumber > 1) {
-			this.props.setCurrentPage(--pageNumber)
-			this.props.usersData.length = 0
-			this.props.toggleFetching(true)
-
-			usersApi.setPrevUsers(pageNumber, this.props.count)
-				.then(response => {
-					this.props.toggleFetching(false)
-					this.props.addUsers(response.items)
-				})
-		}
+		this.props.setPrevUsers(pageNumber, this.props.count)
 	}
 
 	onNextPageChanged = (pageNumber, pageCount) => {
-		if (pageNumber <= pageCount) {
-			this.props.setCurrentPage(++pageNumber)
-			this.props.usersData.length = 0
-			this.props.toggleFetching(true)
-
-			usersApi.setNextUsers(pageNumber, this.props.count)
-				.then(response => {
-					this.props.toggleFetching(false)
-					this.props.addUsers(response.items)
-				})
-		}
+		this.props.setNextUsers(pageNumber, pageCount, this.props.count)
 	}
 
 	 onUserFollow = (id) => {
-		this.props.toggleFollowingProgress(true, id)
-		usersApi.followUser(id)
-			.then(response => {
-				if (response.resultCode === 0) {
-					this.props.toggleFollow(id)
-				}
-				this.props.toggleFollowingProgress(false, id)
-			})
+		this.props.followUser(id)
 	}
 
 	 onUserUnfollow = (id) => {
-		 this.props.toggleFollowingProgress(true, id)
-		usersApi.unfollowUser(id)
-			.then(response => {
-				if (response.resultCode === 0) {
-					this.props.toggleFollow(id)
-				}
-				this.props.toggleFollowingProgress(false, id)
-			})
+		 this.props.unfollowUser(id)
 	}
 
 
@@ -111,5 +66,5 @@ let mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps, {
-	addUsers, toggleFollow, setCurrentPage, setTotalUsersCount, toggleFetching, toggleFollowingProgress
+	followUser, setUsers, setPrevUsers, setNextUsers, unfollowUser
 })(UsersContainer)

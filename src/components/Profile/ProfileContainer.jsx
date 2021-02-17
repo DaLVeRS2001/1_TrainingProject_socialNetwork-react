@@ -1,41 +1,16 @@
 import React from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {clearProfile, setUserProfile} from "../../Redux/profileReducer";
+import {setProfile} from "../../Redux/profileReducer";
 import {withRouter} from "react-router-dom";
-import profileApi from "../../api/profileApi";
-import {toggleFetching} from "../../Redux/usersReducer";
+import withAuthRedirect from "../../hocs/withAuthRedirect";
+
 
 class ProfileContainer extends React.Component {
 	componentDidMount() {
+
 		let userId = this.props.match.params.userId
-		const setUserProfile = (profile) => {
-			this.props.setUserProfile(profile)
-		}
-
-		if (!userId) {
-			if (this.props.profile != null){
-				this.props.clearProfile()
-			}
-			profileApi.getOwnId().then(provideOwnId)
-
-			function provideOwnId(ownId) {
-				profileApi.setUserProfile(ownId)
-					.then(response => {
-						setUserProfile(response)
-					})
-			}
-		}else{
-			if (this.props.profile != null){
-				this.props.clearProfile()
-			}
-			this.props.toggleFetching(true)
-			profileApi.setUserProfile(userId)
-				.then(response => {
-					this.props.setUserProfile(response)
-					this.props.toggleFetching(false)
-				})
-		}
+		this.props.setProfile(userId)
 	}
 
 
@@ -47,12 +22,12 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state)=> {
 	return {
 		profile: state.profileReducer.profile,
-		isFetching: state.usersReducer.isFetching
 	}
 }
 
 let withUrlDataContainerComp = withRouter(ProfileContainer)
 
-export default connect(mapStateToProps, {
-	setUserProfile, toggleFetching, clearProfile
-})(withUrlDataContainerComp)
+let AuthRedirectComp = withAuthRedirect(withUrlDataContainerComp)
+
+export default connect(mapStateToProps, {setProfile
+})(AuthRedirectComp)
