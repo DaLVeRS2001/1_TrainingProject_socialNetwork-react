@@ -11,15 +11,16 @@ import LoginPage from "./components/login/Login";
 
 
 const App = (props) => {
+  console.log(props.isAuth)
   return (
     <div className="app-wrapper">
       <HeaderContainer/>
       <Sidebar/>
       <div className='app-wrapper-content'>
-        <Route path='/dialogs' render={()=> <DialogsContainer />} />
-        <Route path='/profile/:userId?' render={()=> <ProfileContainer /> } />
-        <Route path='/users' render={()=> <UsersContainer/> } />
-        <Route path='/login' render={()=> <LoginPage/>}/>
+        <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+        <Route path='/users' render={() => <UsersContainer/>}/>
+        <Route path='/login' render={() => <LoginPage/>}/>
+        <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
       </div>
     </div>
 )
@@ -28,4 +29,4 @@ const App = (props) => {
 
 
 
-export default App;
+export default App

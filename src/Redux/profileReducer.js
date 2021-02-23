@@ -4,7 +4,8 @@ const ADD_POST = 'ADD-POST',
 	UPDATE_POST_TEXT = 'UPDATE-POST-TEXT',
 	SET_USER_PROFILE = 'SET_USER_PROFILE',
 	CLEAR_PROFILE = 'CLEAR_PROFILE',
-	TOGGLE_FETCHING = 'TOGGLE_FETCHING';
+	TOGGLE_FETCHING = 'TOGGLE_FETCHING',
+	SET_USER_STATUS = 'SET_USER_STATUS';
 
 let initialState = {
 	postsData: [
@@ -26,6 +27,7 @@ let initialState = {
 	],
 	newPostText: '',
 	profile: null,
+	status: 'sadfsdasd',
 	isFetching: false
 
 }
@@ -70,6 +72,11 @@ const profileReducer = (state = initialState, action) => {
 				...state,
 				isFetching: action.isFetching
 			}
+		case SET_USER_STATUS:
+			return{
+				...state,
+				status: action.status
+			}
 
 		default:
 			return state;
@@ -85,16 +92,13 @@ export const updatePostText = (text) => ({type: UPDATE_POST_TEXT, newText: text}
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const clearProfile = () => ({type: CLEAR_PROFILE})
 export const toggleFetching = (isFetching) => ({type: TOGGLE_FETCHING, isFetching})
-
+export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
 
 //                                           THUNKS
-
-export const setProfile = (userId, profile) => (dispatch) => {
-
+export const setProfile = (userId) => (dispatch) => {
 	const onUserProfileReceived = (profile) => {
 		dispatch(setUserProfile(profile))
 	}
-
 	if (!userId) {
 		dispatch(clearProfile())
 		profileApi.getOwnId().then(provideOwnId)

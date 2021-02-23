@@ -13,7 +13,7 @@ import {Provider} from "react-redux";
     <React.StrictMode>
       <BrowserRouter>
         <Provider store={store}>
-        <App/>
+        <App isAuth={store.getState().authReducer.isAuth}/>
         </Provider>
       </BrowserRouter>
     </React.StrictMode>,

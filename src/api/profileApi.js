@@ -8,6 +8,10 @@ const profileApi = {
 	getOwnId(){
 		return instance.get(`auth/me`)
 			.then(response=> response.data.data.id)
+	},
+	getStatus(id){
+		return instance.get(`/profile/status/${id}`)
+			.then(response=> response.statusText)
 	}
 }
 
