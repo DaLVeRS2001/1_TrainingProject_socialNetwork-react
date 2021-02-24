@@ -6,11 +6,15 @@ import Preloader from "../common/Preloader/Preloader";
 
 const Profile = (props) => {
 	let userId = props.match.params.userId
-	console.log(props)
 	return (
 		<div className={s.content}>
 			{props.isFetching && <Preloader/>}
-			<ProfileInfo status={props.status} userId={userId} profile={props.profile}/>
+			<ProfileInfo
+				updateStatus={props.updateStatus}
+				status={props.status}
+				userId={userId}
+				profile={props.profile}
+			/>
 			<PostsContainer/>
 		</div>
 	)

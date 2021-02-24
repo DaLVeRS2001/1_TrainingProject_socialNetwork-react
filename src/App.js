@@ -11,7 +11,6 @@ import LoginPage from "./components/login/Login";
 
 
 const App = (props) => {
-  console.log(props.isAuth)
   return (
     <div className="app-wrapper">
       <HeaderContainer/>

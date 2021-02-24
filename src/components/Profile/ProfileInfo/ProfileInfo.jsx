@@ -11,12 +11,11 @@ const ProfileInfo = (props) => {
 	if (!props.profile){
 		return <Preloader/>
 	}
-
 		return (
 		<div className={s.profileInfoBlock}>
 			<div>
 				<img src={prof.photos.small != null ? prof.photos.small : userImage} alt="Photo Wasn't Loaded"/>
-				<ProfileStatus userId={props.userId} status={props.status}/>
+				<ProfileStatus updateStatus={props.updateStatus} userId={props.userId} status={props.status}/>
 			</div>
 
 			<div className={s.descriptionBlock}>

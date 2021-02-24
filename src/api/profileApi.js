@@ -10,8 +10,11 @@ const profileApi = {
 			.then(response=> response.data.data.id)
 	},
 	getStatus(id){
-		return instance.get(`/profile/status/${id}`)
-			.then(response=> response.statusText)
+		return instance.get(`profile/status/${id}`)
+			.then(response=> response.data)
+	},
+	updateStatus(status){
+		return instance.put(`profile/status`, {status})
 	}
 }
 

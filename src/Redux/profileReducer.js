@@ -27,8 +27,8 @@ let initialState = {
 	],
 	newPostText: '',
 	profile: null,
-	status: 'sadfsdasd',
-	isFetching: false
+	status: 'Your status',
+	isFetching: false,
 
 }
 
@@ -93,7 +93,6 @@ export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const clearProfile = () => ({type: CLEAR_PROFILE})
 export const toggleFetching = (isFetching) => ({type: TOGGLE_FETCHING, isFetching})
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
-
 //                                           THUNKS
 export const setProfile = (userId) => (dispatch) => {
 	const onUserProfileReceived = (profile) => {
@@ -119,5 +118,32 @@ export const setProfile = (userId) => (dispatch) => {
 			})
 	}
 }
+export const setStatus = (userId) => (dispatch) => {
+	if (!userId) {
+		profileApi.getOwnId().then(provideOwnId)
+
+		function provideOwnId(ownId) {
+			profileApi.getStatus(ownId)
+				.then((response) => {
+					dispatch(setUserStatus(response))
+				})
+		}
+	} else {
+		profileApi.getStatus(userId)
+			.then((response) => {
+				dispatch(setUserStatus(response))
+			})
+	}
+}
+
+export const updateStatus = (status) => (dispatch) => {
+	profileApi.updateStatus(status)
+		.then((response) => {
+			if (response.data.resultCode === 0) {
+				dispatch(setUserStatus(status))
+			}
+		})
+}
+
 
 export default profileReducer
