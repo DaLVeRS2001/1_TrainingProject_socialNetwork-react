@@ -6,14 +6,36 @@
     width: 50px;
     height: 50px;
   }
+
   .loginBlock{
     float: right;
     margin-right: 10px;
-    a{
+
+    a {
       text-decoration: none;
       color: yellow;
     }
-  }
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      height: 30px;
+      width: 180px;
+
+      span {
+        margin-right: 10px;
+        color: gold;
+        cursor: pointer;
+        transition: font-size ease-in .2s;
+
+        &:hover {
+          font-size: 17px;
+        }
+      }//span
+    }//div
+
+
+  }//loginBlock
 
 }
 
