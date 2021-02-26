@@ -1,7 +1,7 @@
 import profileApi from "../api/profileApi";
+import {reset} from "redux-form";
 
 const ADD_POST = 'ADD-POST',
-	UPDATE_POST_TEXT = 'UPDATE-POST-TEXT',
 	SET_USER_PROFILE = 'SET_USER_PROFILE',
 	CLEAR_PROFILE = 'CLEAR_PROFILE',
 	TOGGLE_FETCHING = 'TOGGLE_FETCHING',
@@ -25,7 +25,7 @@ let initialState = {
 			message: 'how ar u?'
 		}
 	],
-	newPostText: '',
+
 	profile: null,
 	status: 'Your status',
 	isFetching: false,
@@ -35,26 +35,20 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_POST:
-			if (state.newPostText === '') {}
-
+			if (action.newPostText) {
 				let id = state.postsData.length + 1
 				let newPost = {
 					id: id,
 					src: 'https://cdn.shopify.com/s/files/1/1804/6139/products/The_Purge-Balck_Base_Mask_1200x1200.jpg?v=1567392045',
-					message: state.newPostText
+					message: action.newPostText
 				}
 
-			return {
-				...state,
-				postsData: [...state.postsData, newPost],
-				newPostText: ''
-			}
-
-
-		case UPDATE_POST_TEXT:
-			return {
-				...state,
-				newPostText: action.newText
+				return {
+					...state,
+					postsData: [...state.postsData, newPost],
+				}
+			}else{
+				return state
 			}
 
 		case SET_USER_PROFILE:
@@ -87,13 +81,17 @@ const profileReducer = (state = initialState, action) => {
 
 
 //                                       ACTION CREATORS
-export const addPost = () => ({type: ADD_POST})
-export const updatePostText = (text) => ({type: UPDATE_POST_TEXT, newText: text})
+export const addUserPost = (newPostText) => ({type: ADD_POST, newPostText})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const clearProfile = () => ({type: CLEAR_PROFILE})
 export const toggleFetching = (isFetching) => ({type: TOGGLE_FETCHING, isFetching})
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
 //                                           THUNKS
+export const addPost = (newPostText) => (dispatch) => {
+	dispatch(reset('PostForm'))
+	dispatch(addUserPost(newPostText))
+}
+
 export const setProfile = (userId) => (dispatch) => {
 	const onUserProfileReceived = (profile) => {
 		dispatch(setUserProfile(profile))
@@ -144,6 +142,7 @@ export const updateStatus = (status) => (dispatch) => {
 			}
 		})
 }
+
 
 
 export default profileReducer

@@ -1,4 +1,5 @@
 import authApi from "../api/authApi";
+import {reset} from "redux-form";
 
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA',
 	TOGGLE_IS_AUTH = 'TOGGLE_IS_AUTH'
@@ -8,7 +9,7 @@ const initialState = {
 	id: null,
 	email: null,
 	login: null,
-	isAuth: false
+	isAuth: true
 }
 
 const authReducer = (state=initialState, action) => {
@@ -49,10 +50,9 @@ export const setAuthData = () => (dispatch) => {
 }
 
 export const signIn = (formData) => (dispatch) => {
-
 	authApi.submitLoginForm(formData)
 		.then((response)=> {
-			console.log(response)
+			dispatch(reset('Login'))
 			if (response.resultCode === 0){
 				dispatch(toggleIsAuth(true))
 			}

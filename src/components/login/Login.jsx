@@ -28,7 +28,6 @@ const LoginReduxForm =  reduxForm({
 
 const Login = (props) => {
 	const onSubmit = (formData, dispatch) => {
-		dispatch(reset('Login'))
 		props.signIn(formData)
 	}
 

@@ -13,6 +13,14 @@ class HeaderContainer extends React.Component{
 		this.props.setAuthData()
 	}
 
+	componentDidUpdate(prevProps, prevState) {
+		if (prevProps.isAuth !== this.props.isAuth){
+			console.log(prevProps.isAuth + ' ' + this.props.isAuth)
+			this.props.setAuthData()
+		}
+
+	}
+
 	render() {
 		return <Header onLogout={this.onLogout} {...this.props}/>
 	}

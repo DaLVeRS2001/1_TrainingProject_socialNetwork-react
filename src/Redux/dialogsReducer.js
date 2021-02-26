@@ -1,5 +1,6 @@
+import {reset} from "redux-form";
+
 const SEND_MESSAGE = 'SEND-MESSAGE'
-const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT'
 
 let initialState = {
 	dialogsData: [
@@ -16,31 +17,25 @@ let initialState = {
 		{id: 4, userMessage: 'good morning'},
 		{id: 5, userMessage: "what's up"}
 	],
-	newMessageText: ''
 }
 
 
 const dialogsReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case SEND_MESSAGE:
-			if (state.newMessageText === '') {}
-
+			if (action.newMessageText) {
 				let id = state.messagesData.length + 1
 				let newMessage = {
 					id: id,
-					userMessage: state.newMessageText
+					userMessage: action.newMessageText
 				}
 
 				return {
 					...state,
 					messagesData: [...state.messagesData, newMessage],
-					newMessageText: ''
 				}
-
-		case UPDATE_MESSAGE_TEXT:
-			return {
-				...state,
-				newMessageText: action.newMessageText
+			}else{
+				return state
 			}
 
 		default:
@@ -52,11 +47,14 @@ const dialogsReducer = (state = initialState, action) => {
 
 
 //                                       ACTION CREATORS
-export const sendMessageActionCreator = () => ({type: SEND_MESSAGE})
-export const updateMessageTextActionCreator = (text) =>
-	({type: UPDATE_MESSAGE_TEXT, newMessageText: text})
+export const sendUserMessage = (newMessageText) => ({type: SEND_MESSAGE, newMessageText})
 
 
 //                                           THUNKS
+export const sendMessage = (newMessageText) => (dispatch) => {
+	dispatch(reset('DialogMessageForm'))
+	dispatch(sendUserMessage(newMessageText))
+}
+
 
 export default dialogsReducer
