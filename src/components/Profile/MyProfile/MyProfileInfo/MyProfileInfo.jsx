@@ -1,10 +1,11 @@
 import React from "react";
-import s from "./ProfileInfo.module.scss";
-import userImage from '../../../assets/images/userImage.png'
-import Preloader from "../../common/Preloader/Preloader";
-import ProfileStatus from "./ProfileStatus.jsx"
+import s from "./MyProfileInfo.module.scss";
+import userImage from '../../../../assets/images/userImage.png'
+import Preloader from "../../../common/Preloader/Preloader";
+import MyProfileStatus from "./MyProfileStatus";
 
-const ProfileInfo = (props) => {
+
+const MyProfileInfo = (props) => {
 	const prof = props.profile
 
 
@@ -15,7 +16,7 @@ const ProfileInfo = (props) => {
 		<div className={s.profileInfoBlock}>
 			<div>
 				<img src={prof.photos.small != null ? prof.photos.small : userImage} alt="Photo Wasn't Loaded"/>
-				<ProfileStatus updateStatus={props.updateStatus} userId={props.userId} status={props.status}/>
+				<MyProfileStatus updateStatus={props.updateStatus} ownId={props.ownId} status={props.status}/>
 			</div>
 
 			<div className={s.descriptionBlock}>
@@ -29,7 +30,7 @@ const ProfileInfo = (props) => {
 }
 
 
-export default ProfileInfo
+export default MyProfileInfo
 
 
 

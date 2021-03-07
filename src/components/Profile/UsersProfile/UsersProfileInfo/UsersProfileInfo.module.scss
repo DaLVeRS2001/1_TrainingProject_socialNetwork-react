@@ -1,0 +1,41 @@
+.profileInfoBlock{
+
+  div {
+    display: flex;
+
+    img {
+      height: 250px;
+      width: 25%;
+    }
+
+    .statusBlock {
+      margin-left: 20px;
+      height: 50px;
+
+      .status {
+
+        input {
+          font-size: 18px;
+          height: 30px;
+        }
+
+        span {
+          color: gold;
+          font-size: 18px;
+        }
+      }
+    }
+
+    .descriptionBlock {
+
+      .aboutMe {
+        height: 50px;
+        width: 50px;
+        border: 1px solid dodgerblue;
+        border-radius: 5px;
+        text-align: center;
+      }
+    }
+
+  }
+}

@@ -77,78 +77,74 @@ const usersReducer = (state = initialState, action) => {
 
 
 //                                       ACTION CREATORS
-export const toggleFollow = (userId) => ({type: TOGGLE_FOLLOW, userId})
-export const addUsers = (users) => ({type: ADD_USERS, users})
-export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
-export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount})
-export const toggleFetching = (isFetching) => ({type: TOGGLE_FETCHING, isFetching})
-export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_FOLLOWING_PROGRESS, isFetching, userId})
-export const clearUsersData = () => ({type: CLEAR_USERS_DATA})
+const toggleFollow = (userId) => ({type: TOGGLE_FOLLOW, userId}),
+	addUsers = (users) => ({type: ADD_USERS, users}),
+	setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage}),
+	setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount}),
+	toggleFetching = (isFetching) => ({type: TOGGLE_FETCHING, isFetching}),
+	toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_FOLLOWING_PROGRESS, isFetching, userId}),
+	clearUsersData = () => ({type: CLEAR_USERS_DATA})
 
 
 //                                           THUNKS
-export const setUsers = (currentPage, count) => (dispatch) => {
-	dispatch(clearUsersData())
-	dispatch(toggleFetching(true))
-
-	usersApi.getUsers(currentPage, count)
-		.then(response => {
-			dispatch(toggleFetching(false))
-			dispatch(addUsers(response.items))
-			dispatch(setTotalUsersCount(response.totalCount))
-		})
-}
-
-export const setPrevUsers = (pageNumber, count) => (dispatch) => {
-	if (pageNumber > 1) {
+export const getUsers = (currentPage, count) => (dispatch) => {
 		dispatch(clearUsersData())
-		dispatch(setCurrentPage(--pageNumber))
 		dispatch(toggleFetching(true))
-
-		usersApi.getPrevUsers(pageNumber, count)
+		usersApi.getUsers(currentPage, count)
 			.then(response => {
 				dispatch(toggleFetching(false))
 				dispatch(addUsers(response.items))
+				dispatch(setTotalUsersCount(response.totalCount))
 			})
-	}
-}
+	},
 
-export  const setNextUsers = (pageNumber, pageCount, count) => (dispatch) => {
-	// usersData.length = 0
-	if (pageNumber <= pageCount) {
-		dispatch(clearUsersData())
-		dispatch(setCurrentPage(++pageNumber))
-		dispatch(toggleFetching(true))
+	getPrevUsers = (pageNumber, count) => (dispatch) => {
+		if (pageNumber > 1) {
+			dispatch(clearUsersData())
+			dispatch(setCurrentPage(--pageNumber))
+			dispatch(toggleFetching(true))
+			usersApi.getPrevUsers(pageNumber, count)
+				.then(response => {
+					dispatch(toggleFetching(false))
+					dispatch(addUsers(response.items))
+				})
+		}
+	},
 
-		usersApi.getNextUsers(pageNumber, count)
+	getNextUsers = (pageNumber, pageCount, count) => (dispatch) => {
+		if (pageNumber <= pageCount) {
+			dispatch(clearUsersData())
+			dispatch(setCurrentPage(++pageNumber))
+			dispatch(toggleFetching(true))
+			usersApi.getNextUsers(pageNumber, count)
+				.then(response => {
+					dispatch(toggleFetching(false))
+					dispatch(addUsers(response.items))
+				})
+		}
+	},
+
+	followUser = (id) => (dispatch) => {
+		dispatch(toggleFollowingProgress(true, id))
+		usersApi.followUser(id)
 			.then(response => {
-				dispatch(toggleFetching(false))
-				dispatch(addUsers(response.items))
+				if (response.resultCode === 0) {
+					dispatch(toggleFollow(id))
+				}
+				dispatch(toggleFollowingProgress(false, id))
+			})
+	},
+
+	unfollowUser = (id) => (dispatch) => {
+		dispatch(toggleFollowingProgress(true, id))
+		usersApi.unfollowUser(id)
+			.then(response => {
+				if (response.resultCode === 0) {
+					dispatch(toggleFollow(id))
+				}
+				dispatch(toggleFollowingProgress(false, id))
 			})
 	}
-}
-
-export  const followUser = (id) => (dispatch) => {
-	dispatch(toggleFollowingProgress(true, id))
-	usersApi.followUser(id)
-		.then(response => {
-			if (response.resultCode === 0) {
-				dispatch(toggleFollow(id))
-			}
-			dispatch(toggleFollowingProgress(false, id))
-		})
-}
-
-export  const unfollowUser = (id) => (dispatch) => {
-	dispatch(toggleFollowingProgress(true, id))
-	usersApi.unfollowUser(id)
-		.then(response => {
-			if (response.resultCode === 0) {
-				dispatch(toggleFollow(id))
-			}
-			dispatch(toggleFollowingProgress(false, id))
-		})
-}
 
 
 

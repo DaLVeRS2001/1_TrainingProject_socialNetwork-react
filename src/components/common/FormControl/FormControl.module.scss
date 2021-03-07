@@ -1,0 +1,25 @@
+.formControl {
+  &.error {
+    input, textarea {
+      border: 2px solid red;
+    }
+
+    span {
+      position: absolute;
+      bottom: -35px;
+      font:400 16px 'Roboto',sans-serif;
+      border: 1px solid red;
+      padding: 1px 4px 2px 4px;
+      border-radius: 7px;
+      color: red;
+    }
+  }
+
+}
+.formError{
+  margin-bottom: 30px;
+  border: 2px solid red;
+  color: red;
+  width: 300px;
+  text-align: center;
+}

@@ -5,7 +5,6 @@ import Preloader from "../common/Preloader/Preloader";
 
 const Users = (props) => {
 	let pageCount = Math.ceil(props.totalUsersCount / props.count)
-
 	return (
 			<div className={s.usersBlock}>
 				{props.isFetching && <Preloader/>}
@@ -28,6 +27,8 @@ const Users = (props) => {
 						userData={u}
 						toggleFollow={props.toggleFollow}
 						followingInProgress={props.followingInProgress}
+						getProfile={props.getProfile}
+						getStatus={props.getStatus}
 					/>)}
 				</div>
 

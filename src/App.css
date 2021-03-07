@@ -10,7 +10,7 @@
 .app-wrapper-content{
   position: relative;
   grid-area: c;
-  background: blue;
+  background: #3e0505;
   padding: 10px;
 }
 

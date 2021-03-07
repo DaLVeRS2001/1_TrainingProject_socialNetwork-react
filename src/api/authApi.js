@@ -1,16 +1,20 @@
 import instance from "./instanceApiSetting/instanceApi";
 
 const authApi = {
-	getAuthUserData(){
+	me(){
 		return instance.get('auth/me')
 			.then(response=> response.data)
 	},
-	submitLoginForm(formData){
+	login(formData){
 		return instance.post('auth/login', formData)
 			.then((response)=> response.data)
 	},
-	sendLogoutRequest(){
+	logout(){
 		return instance.delete('auth/login')
+			.then((response)=> response.data)
+	},
+	getCaptcha(){
+		return instance.get('security/get-captcha-url')
 			.then((response)=> response.data)
 	}
 }

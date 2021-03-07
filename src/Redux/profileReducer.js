@@ -54,12 +54,13 @@ const profileReducer = (state = initialState, action) => {
 		case SET_USER_PROFILE:
 			return {
 				...state,
-				profile: action.profile
+				profile: action.profile,
 			}
 		case CLEAR_PROFILE:
 			return {
 				...state,
 				profile: null,
+				userId: null
 			}
 		case TOGGLE_FETCHING:
 			return {
@@ -81,67 +82,44 @@ const profileReducer = (state = initialState, action) => {
 
 
 //                                       ACTION CREATORS
-export const addUserPost = (newPostText) => ({type: ADD_POST, newPostText})
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
-export const clearProfile = () => ({type: CLEAR_PROFILE})
-export const toggleFetching = (isFetching) => ({type: TOGGLE_FETCHING, isFetching})
-export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
+const addUserPost = (newPostText) => ({type: ADD_POST, newPostText}),
+	setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile}),
+	clearProfile = () => ({type: CLEAR_PROFILE}),
+	toggleFetching = (isFetching) => ({type: TOGGLE_FETCHING, isFetching}),
+	setUserStatus = (status) => ({type: SET_USER_STATUS, status})
+
+
 //                                           THUNKS
 export const addPost = (newPostText) => (dispatch) => {
-	dispatch(reset('PostForm'))
-	dispatch(addUserPost(newPostText))
-}
+		dispatch(reset('PostForm'))
+		dispatch(addUserPost(newPostText))
+	},
 
-export const setProfile = (userId) => (dispatch) => {
-	const onUserProfileReceived = (profile) => {
-		dispatch(setUserProfile(profile))
-	}
-	if (!userId) {
-		dispatch(clearProfile())
-		profileApi.getOwnId().then(provideOwnId)
-
-		function provideOwnId(ownId) {
+	getProfile = (userId) => (dispatch) => {
+			dispatch(clearProfile())
 			dispatch(toggleFetching(true))
-			profileApi.getUserProfile(ownId)
-				.then(onUserProfileReceived)
-			dispatch(toggleFetching(false))
-		}
-	} else {
-		dispatch(clearProfile())
-		dispatch(toggleFetching(true))
-		profileApi.getUserProfile(userId)
-			.then(response => {
-				onUserProfileReceived(response)
-				dispatch(toggleFetching(false))
-			})
-	}
-}
-export const setStatus = (userId) => (dispatch) => {
-	if (!userId) {
-		profileApi.getOwnId().then(provideOwnId)
+			return profileApi.getUserProfile(userId)
+				.then(profile => {
+					dispatch(setUserProfile(profile))
+					dispatch(toggleFetching(false))
+				})
+	},
 
-		function provideOwnId(ownId) {
-			profileApi.getStatus(ownId)
+	getStatus = (userId) => (dispatch) => {
+			profileApi.getStatus(userId)
 				.then((response) => {
 					dispatch(setUserStatus(response))
 				})
-		}
-	} else {
-		profileApi.getStatus(userId)
+	},
+
+	updateStatus = (status) => (dispatch) => {
+		profileApi.updateStatus(status)
 			.then((response) => {
-				dispatch(setUserStatus(response))
+				if (response.data.resultCode === 0) {
+					dispatch(setUserStatus(status))
+				}
 			})
 	}
-}
-
-export const updateStatus = (status) => (dispatch) => {
-	profileApi.updateStatus(status)
-		.then((response) => {
-			if (response.data.resultCode === 0) {
-				dispatch(setUserStatus(status))
-			}
-		})
-}
 
 
 

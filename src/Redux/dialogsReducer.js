@@ -47,7 +47,7 @@ const dialogsReducer = (state = initialState, action) => {
 
 
 //                                       ACTION CREATORS
-export const sendUserMessage = (newMessageText) => ({type: SEND_MESSAGE, newMessageText})
+const sendUserMessage = (newMessageText) => ({type: SEND_MESSAGE, newMessageText})
 
 
 //                                           THUNKS

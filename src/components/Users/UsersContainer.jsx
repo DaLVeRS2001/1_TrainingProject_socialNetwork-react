@@ -2,25 +2,25 @@ import Users from "./Users";
 import {connect} from "react-redux";
 import {
 	followUser, unfollowUser,
-	setNextUsers, setPrevUsers,
-	setUsers
+	getNextUsers, getPrevUsers,
+	getUsers
 } from "../../Redux/usersReducer";
 import React from "react";
-import withAuthRedirect from "../../hocs/withAuthRedirect";
 import {compose} from "redux";
+import User from "./User/User";
 
 
 class UsersContainer extends React.Component {
 	componentDidMount() {
-		this.props.setUsers(this.props.currentPage, this.props.count)
+		this.props.getUsers(this.props.currentPage, this.props.count)
 	}
 
 	onPrevPageChanged = (pageNumber) => {
-		this.props.setPrevUsers(pageNumber, this.props.count)
+		this.props.getPrevUsers(pageNumber, this.props.count)
 	}
 
 	onNextPageChanged = (pageNumber, pageCount) => {
-		this.props.setNextUsers(pageNumber, pageCount, this.props.count)
+		this.props.getNextUsers(pageNumber, pageCount, this.props.count)
 	}
 
 	 onUserFollow = (id) => {
@@ -68,6 +68,5 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-	connect(mapStateToProps, {followUser, setUsers, setPrevUsers, setNextUsers, unfollowUser}),
-	withAuthRedirect
+	connect(mapStateToProps, {followUser, getUsers, getPrevUsers,  getNextUsers, unfollowUser}),
 )(UsersContainer)

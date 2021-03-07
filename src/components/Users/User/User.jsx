@@ -13,11 +13,12 @@ const User = (props) => {
 		props.onUserFollow(ud.id)
 	}
 
+
 	return (
 			<div id={ud.id} className={s.user} key={ud.id}>
 
 				<div className={s.avaBtn}>
-					<NavLink  to={'/profile/'+ ud.id}>
+					<NavLink  to={`/profile/${ud.id}`}>
 						<img
 							src={ud.photos.small != null ? ud.photos.small : userImage}
 							alt='it wasnt loaded'
