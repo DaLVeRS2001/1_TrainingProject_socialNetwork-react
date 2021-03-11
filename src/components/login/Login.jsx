@@ -18,6 +18,7 @@ import passIcon from "../../assets/images/icons/lock.png"
 
 
 
+
 //validators
 const Input = FormElement("input"),
 	maxLength20 = maxLength(20),

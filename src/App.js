@@ -10,6 +10,7 @@ import {connect} from "react-redux";
 import {initializeApp} from "./Redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import Profile from "./components/Profile/Profile"
+import Particles from "./components/common/Particles/Particles";
 
 
 class App extends React.Component {
@@ -23,6 +24,7 @@ class App extends React.Component {
   render() {
     if (!this.props.initialized) return <Preloader/>
       return (
+        <div className="app">
         <div className="app-wrapper">
           <HeaderContainer/>
           <Sidebar ownId={this.props.ownId}/>
@@ -34,6 +36,7 @@ class App extends React.Component {
             <Route path='/users' render={() => <UsersContainer/>}/>
             <Route path='/login' render={() => <LoginPage/>}/>
           </div>
+        </div>
         </div>
       )
 

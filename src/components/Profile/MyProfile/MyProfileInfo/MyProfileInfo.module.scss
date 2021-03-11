@@ -1,39 +1,51 @@
 .profileInfoBlock{
-
-  div {
+  .wrapper {
     display: flex;
 
-    img {
-      height: 250px;
-      width: 25%;
-    }
-
-    .statusBlock {
-      margin-left: 20px;
-      height: 50px;
-
-      .status {
-
-        input {
-          font-size: 18px;
-          height: 30px;
-        }
-
-        span {
-          color: gold;
-          font-size: 18px;
-        }
+    .imgBlock{
+      background: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      img {
+        height: 200px;
+        width: 200px;
       }
     }
 
     .descriptionBlock {
+      background: #fff;
+      margin-left: 15px;
+      padding: 10px 20px;
+      width: 100%;
+      border-radius: 5px;
+      hr{
+        border: 0;
+        height: 1px;
+        background: #000;
+        opacity: .3;
+      }
+      .name{
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        font-size: 30px;
 
+      }
+      .statusBlock {
+          input {
+            width: 410px;
+            border-radius: 5px;
+
+            border: 1px solid black;
+            outline: 0;
+          }
+          span {
+            font-size: 16px;
+          }
+      }
       .aboutMe {
-        height: 50px;
-        width: 50px;
         border: 1px solid dodgerblue;
         border-radius: 5px;
-        text-align: center;
       }
     }
 

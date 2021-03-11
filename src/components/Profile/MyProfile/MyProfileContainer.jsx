@@ -4,9 +4,12 @@ import {getProfile, getStatus, updateStatus} from "../../../Redux/profileReducer
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import MyProfile from "./MyProfile";
+import axios from "axios";
 
 const MyProfileContainer = (props) => {
 	let userId = props.ownId
+
+
 
 	useEffect(() => {
 		if(userId) {

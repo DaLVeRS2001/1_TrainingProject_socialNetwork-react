@@ -27,7 +27,7 @@ let initialState = {
 	],
 
 	profile: null,
-	status: 'Your status',
+	status: 'change status',
 	isFetching: false,
 
 }

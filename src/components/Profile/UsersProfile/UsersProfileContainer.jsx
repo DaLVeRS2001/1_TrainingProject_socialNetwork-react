@@ -5,6 +5,7 @@ import {getProfile, getStatus} from "../../../Redux/profileReducer";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 
+
 const UsersProfileContainer = (props) => {
 	let userId = props.match.params.userId
 
@@ -15,7 +16,9 @@ const UsersProfileContainer = (props) => {
 		}
 	}, [userId])
 
-	return <UsersProfile  {...props} profile={props.profile}/>
+	return <div>
+		<UsersProfile  {...props} profile={props.profile}/>
+	</div>
 }
 
 

@@ -1,0 +1,38 @@
+.jobDescriptionBlock{
+  img{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  .wrapper{
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    img{
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      left: 0;
+      top: -1px;
+      padding: 1px 1px 0 0;
+    }
+
+    .jobDescription{
+      border: 1px solid black;
+      border-radius: 6px 0 0 0;
+      min-width: 25px;
+      min-height: 25px;
+      max-width: 70px;
+      max-height: 50px;
+      word-wrap: break-word;
+      overflow: auto;
+
+      p{
+        font-size: 10px;
+        text-align: center;
+        margin: 1px 5px 1px 10px;
+      }
+    }
+  }
+}

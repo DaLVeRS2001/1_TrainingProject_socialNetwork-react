@@ -6,20 +6,15 @@ const MyProfileStatus = (props) => {
 	let [status, setStatus] = useState(props.status)
 
 	useEffect(()=> setStatus(props.status), [props.status])
-
 	const toggleEditMode = () => {
-		console.log('edit')
-		// !editMode
-		// 	? setEditMode(true)
-		// 	: setEditMode(false)
-		// props.updateStatus(status)
-		if (!editMode){
-			setEditMode(true)
-		}else{
-			setEditMode(false)
-			props.updateStatus(status)
-		}
+		!editMode
+			? setEditMode(true)
+			: setEditMode(false)
+		status.length < 1
+			? props.updateStatus('no status')
+			: props.updateStatus(status)
 	}
+
 
 	const onStatusChange = (e) => {
 		setStatus(e.currentTarget.value)
@@ -28,10 +23,9 @@ const MyProfileStatus = (props) => {
 	return (
 		<div className={s.statusBlock}>
 			{editMode
-				? <div className={s.status}>
-					 <input onBlur={toggleEditMode} autoFocus onChange={onStatusChange} value={status}/>
-				  </div>
-				: <div className={s.status} onClick={toggleEditMode}><span>{props.status}</span></div>
+				? <input  onBlur={toggleEditMode} autoFocus onChange={onStatusChange} value={status} maxLength={55}/>
+
+				: <span onClick={toggleEditMode}>{props.status}</span>
 			}
 		</div>
 	)

@@ -4,21 +4,10 @@
   align-items: center;
   min-height: 700px;
 
-  html, body {
-    height: 100%;
-  }
-
-  body {
-    background: #283593;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 1200px;
-  }
 
   #signin {
     width: 40%;
-    background: #3F51B5;
+    background: #060d40;
     border-radius: 20px;
     margin: 50px 50px;
     box-shadow: 0 0 64px rgba(0, 0, 0, 0.5);
@@ -95,7 +84,7 @@
       width: 100%;
       padding: 20px;
       display: block;
-      background: #324192;
+      background: #141f67;
       color: #FFF;
       border: none;
       outline: 0;
@@ -107,7 +96,7 @@
     }
 
     button.login:hover {
-      background: #3F51B5;
+      background: #060d40;
     }
 
     .check {

@@ -1,17 +1,28 @@
+.app{
+  background: #3e0505;
+  padding: 20px;
+  border-radius: 20px;
+
+}
+
+
 .app-wrapper {
   width: 1280px;
   margin: 0 auto;
   display: grid;
+  grid-row-gap: 10px;
   grid-template-areas: "h h" "n c";
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
+  background: #3e0505;
 }
 
 .app-wrapper-content{
+  border-radius: 10px;
   position: relative;
   grid-area: c;
   background: #3e0505;
-  padding: 10px;
+  padding: 0 0 0 10px;
 }
 
 
