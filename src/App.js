@@ -30,7 +30,7 @@ class App extends React.Component {
           <Sidebar ownId={this.props.ownId}/>
           <div className='app-wrapper-content'>
             {
-              <Route path='/profile/:userId?' render={() => <Profile isAuth={this.props.isAuth} ownId={this.props.ownId}/>}/>
+              <Route path='/profile/:userId' render={() => <Profile isAuth={this.props.isAuth} ownId={this.props.ownId}/>}/>
             }
             <Route path='/dialogs' render={() => <DialogsContainer/>}/>
             <Route path='/users' render={() => <UsersContainer/>}/>
