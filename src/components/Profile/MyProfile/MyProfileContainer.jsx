@@ -4,7 +4,6 @@ import {getProfile, getStatus, updateStatus} from "../../../Redux/profileReducer
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import MyProfile from "./MyProfile";
-import axios from "axios";
 
 const MyProfileContainer = (props) => {
 	let userId = props.ownId
@@ -18,7 +17,7 @@ const MyProfileContainer = (props) => {
 		}
 	}, [userId])
 
-	return <MyProfile  {...props} profile={props.profile}/>
+	return <MyProfile  toggleIsPhotoModal={props.toggleIsPhotoModal} {...props} profile={props.profile}/>
 }
 
 
@@ -28,7 +27,7 @@ let mapStateToProps = (state)=> {
 		profile: state.profileReducer.profile,
 		status: state.profileReducer.status,
 		ownId: state.authReducer.id,
-		isFetching: state.profileReducer.isFetching
+		isFetching: state.profileReducer.isFetching,
 	}
 }
 

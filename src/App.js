@@ -10,15 +10,21 @@ import {connect} from "react-redux";
 import {initializeApp} from "./Redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import Profile from "./components/Profile/Profile"
-import Particles from "./components/common/Particles/Particles";
+import PhotoModal from "./components/Profile/MyProfile/#myProfileCommon/ChangerPhotoModal/PhotoModal";
 
 
 class App extends React.Component {
+  state = {
+    isPhotoModal: false
+  }
 
   componentDidMount() {
     this.props.initializeApp()
   }
 
+  toggleIsPhotoModal = () => {
+    this.setState({isPhotoModal: !this.state.isPhotoModal})
+  }
 
 
   render() {
@@ -29,14 +35,18 @@ class App extends React.Component {
           <HeaderContainer/>
           <Sidebar ownId={this.props.ownId}/>
           <div className='app-wrapper-content'>
-            {
-              <Route path='/profile/:userId' render={() => <Profile isAuth={this.props.isAuth} ownId={this.props.ownId}/>}/>
-            }
+            <Route path='/profile/:userId' render={() =>
+              <Profile isAuth={this.props.isAuth}
+                       ownId={this.props.ownId}
+                       toggleIsPhotoModal={this.toggleIsPhotoModal}
+            />}/>
             <Route path='/dialogs' render={() => <DialogsContainer/>}/>
             <Route path='/users' render={() => <UsersContainer/>}/>
             <Route path='/login' render={() => <LoginPage/>}/>
           </div>
         </div>
+
+          {this.state.isPhotoModal && <PhotoModal toggleIsPhotoModal={this.toggleIsPhotoModal}/>}
         </div>
       )
 

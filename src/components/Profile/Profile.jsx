@@ -13,7 +13,7 @@ const Profile = (props) => {
 
 	if (props.isAuth){
 		if (props.ownId === userId){
-			return <MyProfileContainer/>
+			return <MyProfileContainer toggleIsPhotoModal={props.toggleIsPhotoModal}/>
 		}else{
 			return <UsersProfileContainer/>
 		}

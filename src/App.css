@@ -2,6 +2,8 @@
   background: #3e0505;
   padding: 20px;
   border-radius: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 

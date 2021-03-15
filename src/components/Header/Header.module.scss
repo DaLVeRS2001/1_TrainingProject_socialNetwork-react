@@ -1,6 +1,7 @@
 
   .header {
     border-radius: 10px;
+
     grid-area: h;
     background: black;
     color: #fff;
@@ -11,9 +12,24 @@
     }
 
     .loginBlock {
+      width: 180px;
+      height: 100%;
       float: right;
-      margin: 5px;
 
+
+      .headerMenu {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        border-radius: 10px;
+        background: blue;
+
+        img{
+          border-radius: 50%;
+          border: 0;
+        }
+      }
 
       a {
         text-decoration: none;
@@ -35,17 +51,9 @@
           &:hover {
             font-size: 17px;
           }
-        }
-
-        //span
-      }
-
-      //div
-
-
-    }
-
-    //loginBlock
+        } //span
+      } //div
+    } //loginBlock
 
   }
 

@@ -3,14 +3,54 @@
     display: flex;
 
     .imgBlock{
+
       background: #fff;
       padding: 15px;
       border-radius: 5px;
-      img {
-        height: 200px;
-        width: 200px;
-      }
-    }
+          .imgBlockWrapper{
+            height: 200px;
+            overflow: hidden;
+
+            img {
+              height: 200px;
+              width: 200px;
+            }
+
+            .changePhotoBlock {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              bottom: 0;
+              left: 0;
+              height: 50px;
+              width: 100%;
+              background: rgba(0, 0, 0, 0.7);
+              transition: transform ease-in .2s;
+
+              span {
+                font-weight: bold;
+                color: #b8b8b8;
+                cursor: pointer;
+                font-family: 'Roboto', sans-serif;
+
+                &:hover {
+                  color: #FFFFFF;
+                  padding: 4px 7px;
+                  background: rgba(255, 255, 255, 0.2);
+                  border-radius: 15px;
+                }
+              }
+
+            }//changePhotoBlock
+
+            &:hover {
+              .changePhotoBlock {
+                transform: translateY(-54px);
+              }
+            }
+
+          }//imgBlockWrapper
+    }//imgBlock
 
     .descriptionBlock {
       background: #fff;

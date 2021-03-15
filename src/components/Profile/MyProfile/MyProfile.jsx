@@ -8,6 +8,7 @@ const MyProfile = (props) => {
 		<div className={s.content}>
 			{props.isFetching && <Preloader/>}
 			<MyProfileInfo
+				toggleIsPhotoModal={props.toggleIsPhotoModal}
 				updateStatus={props.updateStatus}
 				status={props.status}
 				ownId={props.ownId}

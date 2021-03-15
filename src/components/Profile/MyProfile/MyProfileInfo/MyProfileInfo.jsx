@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useState, useRef} from "react";
 import s from "./MyProfileInfo.module.scss";
 import userImage from '../../../../assets/images/userImage.png'
 import Preloader from "../../../common/Preloader/Preloader";
 import MyProfileStatus from "./MyProfileStatus";
-import JobDescription from "../../PofileCommon/JobDescription/JobDescription";
-
-import ContactsMenu from "../../PofileCommon/ContactsMenu/ContactsMenu";
+import JobDescription from "../../#pofileCommon/JobDescription/JobDescription";
+import ContactsMenu from "../../#pofileCommon/ContactsMenu/ContactsMenu";
+import useOnClickOutside from "../../../common/useOnClickOutside/useOnClickOutside";
+import PhotoModal from "../#myProfileCommon/ChangerPhotoModal/PhotoModal";
 
 
 const MyProfileInfo = (props) => {
+
 	const prof = props.profile
 
 
@@ -19,10 +21,16 @@ const MyProfileInfo = (props) => {
 
 	return (
 		<div className={s.profileInfoBlock}>
-			<div className={s.wrapper}>
 
-				<div className={s.imgBlock}>
-					<img src={prof.photos.small != null ? prof.photos.small : userImage} alt="Photo Wasn't Loaded"/>
+			<div  className={s.wrapper}>
+
+				<div  className={s.imgBlock}>
+					<div  className={s.imgBlockWrapper}>
+						<img  src={prof.photos.small != null ? prof.photos.small : userImage} alt="Photo Wasn't Loaded"/>
+							<div className={s.changePhotoBlock}>
+								<span onClick={props.toggleIsPhotoModal}>Change photo</span>
+							</div>
+					</div>
 				</div>
 
 				<div className={s.descriptionBlock}>

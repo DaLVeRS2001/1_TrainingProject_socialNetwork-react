@@ -1,11 +1,11 @@
 import {getAuthData} from "./authReducer";
-import {getProfile} from "./profileReducer";
+import {getProfile, updatePhoto} from "./profileReducer";
 
-const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
+const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS'
 
 
 const initialState = {
-	initialized: false
+	initialized: false,
 }
 
 const appReducer = (state=initialState, action) => {
@@ -15,7 +15,6 @@ const appReducer = (state=initialState, action) => {
 				...state,
 				initialized: true
 			}
-
 		default:
 			return state
 	}

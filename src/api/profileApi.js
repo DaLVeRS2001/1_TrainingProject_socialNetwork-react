@@ -5,16 +5,17 @@ const profileApi = {
 		return instance.get(`profile/${id}`)
 			.then(response=> response.data)
 	},
-	getOwnId(){
-		return instance.get(`auth/me`)
-			.then(response=> response.data.data.id)
-	},
 	getStatus(id){
 		return instance.get(`profile/status/${id}`)
 			.then(response=> response.data)
 	},
 	updateStatus(status){
 		return instance.put(`profile/status`, {status})
+			.then(response=> response.data)
+	},
+	updatePhoto(photo){
+		return instance.put(`profile/photo`, photo)
+			.then(response=> response.data)
 	}
 }
 

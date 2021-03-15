@@ -14,7 +14,7 @@ export const FormElement = (Element) =>  ({input, meta, ...props}) => {
 					if(props.type === t) {
 						return <>
 							<i><img className={props.classIcon} src={props.iconSrc} alt=""/></i>
-							<label for={props.id}>{props.labelName}</label>
+							<label htmlFor={props.id}>{props.labelName}</label>
 						</>
 					}
 				})}
