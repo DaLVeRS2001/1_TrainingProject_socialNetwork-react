@@ -37,7 +37,7 @@ const LoginForm = (props) => {
 						classIcon={'email-icon'} labelName={'Email'}
 						id={'email'} iconSrc={emailIcon}
 						validate={[required]} component={Input}
-						type={'email'} name={'email'}
+						type={'text'} name={'email'}
 					/>
 				</div>
 

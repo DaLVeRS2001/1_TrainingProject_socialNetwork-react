@@ -22,7 +22,9 @@ const mapStateToProps = (state) => {
 	return {
 		login: state.authReducer.login,
 		isAuth: state.authReducer.isAuth,
-		ownPhoto: state.profileReducer.ownPhoto
+		ownId: state.authReducer.id,
+		ownPhoto: state.profileReducer.ownPhoto,
+
 	}
 }
 

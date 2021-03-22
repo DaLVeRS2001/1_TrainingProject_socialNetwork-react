@@ -30,7 +30,7 @@ const LoginForm = (props) => {
 			.then((message)=> {
 				message !== undefined && setError("commonError", {
 					type: "manual",
-					message: message
+					message
 				})
 			})
 	}

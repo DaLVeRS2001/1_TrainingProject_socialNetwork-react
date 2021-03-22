@@ -1,11 +1,11 @@
 
   .header {
     border-radius: 10px;
-
     grid-area: h;
     background: black;
     color: #fff;
-    img {
+
+    .siteIcon {
       padding: 5px 0 5px 10px;
       width: 50px;
       height: 50px;
@@ -16,43 +16,11 @@
       height: 100%;
       float: right;
 
-
-      .headerMenu {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        height: 100%;
-        border-radius: 10px;
-        background: blue;
-
-        img{
-          border-radius: 50%;
-          border: 0;
-        }
-      }
-
-      a {
+      .loginLink {
         text-decoration: none;
         color: yellow;
       }
 
-      div {
-        display: flex;
-        justify-content: space-between;
-        height: 30px;
-        width: 180px;
-
-        span {
-          margin-right: 10px;
-          color: gold;
-          cursor: pointer;
-          transition: font-size ease-in .2s;
-
-          &:hover {
-            font-size: 17px;
-          }
-        } //span
-      } //div
     } //loginBlock
 
   }

@@ -2,18 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e14d9647-6c38-45f7-978e-c49445a9da70" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/common/FormControl/FieldHookForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/login/LoginHookFormVersion.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Header/HeaderMenu/HeaderMenu.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Header/HeaderMenu/HeaderMenu.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/appReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/appReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/authReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/profileReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/profileReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyProfile/#myProfileCommon/ChangerPhotoModal/PhotoModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyProfile/#myProfileCommon/ChangerPhotoModal/PhotoModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/FormControl/FormControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/FormControl/FormControlReduxForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/FormControl/FormControlReduxForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/FormControl/FormControlReduxForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/login/Login.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Login.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/login/LoginHookFormVersion.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/LoginHookFormVersion.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/login/formStyle.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/formStyle.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +47,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Profile/UsersProfile" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Header/HeaderMenu" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -57,11 +58,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\VladB\Desktop\programmingFiles\jsLesson\#projects\1.1-first-project\new-react-project\src\components\Header\HeaderMenu" />
       <recent name="C:\Users\VladB\Desktop\programmingFiles\jsLesson\#projects\1.1-first-project\new-react-project\src\components\Profile\UsersProfile" />
       <recent name="C:\Users\VladB\Desktop\programmingFiles\jsLesson\#projects\1.1-first-project\new-react-project\src\components\Profile\MyProfile" />
       <recent name="C:\Users\VladB\Desktop\programmingFiles\jsLesson\#projects\1.1-first-project\new-react-project\src\components\Profile\ProfileInfo" />
       <recent name="C:\Users\VladB\Desktop\programmingFiles\jsLesson\#projects\1.1-first-project\new-react-project\src\Redux" />
-      <recent name="C:\Users\VladB\Desktop\programmingFiles\jsLesson\#projects\1.1-first-project\new-react-project\src\components\Profile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\VladB\Desktop\programmingFiles\jsLesson\#projects\1.1-first-project\new-react-project\src\components\Profile\MyProfile\#myProfileCommon" />
@@ -137,7 +138,7 @@
       <workItem from="1615890491215" duration="9428000" />
       <workItem from="1616246806526" duration="756000" />
       <workItem from="1616338078063" duration="7027000" />
-      <workItem from="1616408164812" duration="13484000" />
+      <workItem from="1616408164812" duration="25894000" />
     </task>
     <servers />
   </component>
