@@ -1,5 +1,5 @@
 import {getAuthData} from "./authReducer";
-import {getProfile, updatePhoto} from "./profileReducer";
+
 
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS'
 

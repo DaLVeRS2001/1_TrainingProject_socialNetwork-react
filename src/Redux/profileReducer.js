@@ -58,10 +58,8 @@ const profileReducer = (state = initialState, action) => {
 				status: action.status
 			}
 		case UPDATE_PHOTO:
-			return{
-				...state,
-				status: action.status
-			}
+		{
+			console.log('puk')}
 
 		default:
 			return state;
@@ -113,7 +111,7 @@ export const addPost = (newPostText) => (dispatch) => {
 	},
 
 	updatePhoto = (photo) => (dispatch) => {
-	 profileApi.updatePhoto(photo)
+	  profileApi.updatePhoto(photo)
 		.then((response)=> {
 				dispatch(setOwnPhoto(response.data.small))
 		})

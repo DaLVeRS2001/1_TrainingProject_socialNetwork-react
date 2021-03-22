@@ -1,8 +1,9 @@
 import s from './PhotoModal.module.scss'
 import {Field, reduxForm} from "redux-form";
-import {FormElement} from "../../../../common/FormControl/FormControl";
+import {FormElement} from "../../../../common/FormControl/FormControlReduxForm";
 import {updatePhoto} from "../../../../../Redux/profileReducer";
 import {connect} from "react-redux";
+
 
 
 const Input = FormElement("input")
@@ -10,7 +11,8 @@ const Input = FormElement("input")
 
 const PhotoModalForm = (props) => {
 	return <form onChange={props.handleChange} >
-		<Field id={'uploader'} hidden={true} accept='.jpg, .png, .jpeg' type="file" name={'fileModal'} component={Input}/>
+		<Field id={'uploader'} hidden={true} accept='.jpg, .png, .jpeg'
+					 type="file" name={'filePhoto'} component={Input}/>
 		<label  htmlFor='uploader'><span className={s.button}>Select photo</span></label>
 	</form>
 }
@@ -20,12 +22,13 @@ const PhotoModalReduxForm = reduxForm({
 })(PhotoModalForm)
 
 const PhotoModal = (props) => {
-	const onChange = (imageFile) => {
+	const onChange = (imgFile) => {
 		let formData = new FormData();
-		formData.append("image", imageFile.fileModal[0])
-		props.updatePhoto(formData)
+		console.log(imgFile)
+		formData.append("image", imgFile.filePhoto[0]);
+		props.updatePhoto(formData);
 	}
-//props.updatePhoto(formData)
+
 	return (
 			<div  onClick={event => event.target === event.currentTarget && props.toggleIsPhotoModal()} className={s.modal}>
 				<div className={s.window}>
@@ -37,10 +40,17 @@ const PhotoModal = (props) => {
 						<PhotoModalReduxForm onChange={onChange}/>
 					</div>
 
-					<div className={s.footer}></div>
+					<div className={s.footer}>''</div>
 				</div>
 			</div>
 	)
 }
 
-export default connect(null, {updatePhoto})(PhotoModal)
+
+let mapStateToProps = (state) => {
+	return {
+		ownPhoto: state.profileReducer.ownPhoto
+	}
+}
+
+export default connect(mapStateToProps, {updatePhoto})(PhotoModal)

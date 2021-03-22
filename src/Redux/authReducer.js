@@ -55,7 +55,7 @@ export const getAuthData = () => (dispatch) => {
 				if (response.resultCode === 0) {
 					let {id, email, login} = response.data
 					dispatch(setAuthUserData(id, email, login, true))
-					dispatch(updatePhoto())
+					//dispatch(updatePhoto())
 				}
 			})
 	},
@@ -75,6 +75,24 @@ export const getAuthData = () => (dispatch) => {
 						.then(response => {
 							dispatch(addCaptcha(response.url))
 						})
+				}
+			})
+	},
+	signInHookForm = (formData) => (dispatch) => {
+		return authApi.login(formData)
+			.then((response) => {
+				if (response.resultCode === 0) {
+					dispatch(getAuthData())
+					dispatch(clearCaptcha())
+				} else {
+					let message = response.messages.length > 0 ? response.messages[0] : 'some error'
+
+					response.resultCode === 10 &&
+					authApi.getCaptcha()
+						.then(response => {
+							dispatch(addCaptcha(response.url))
+						})
+					return message
 				}
 			})
 	},

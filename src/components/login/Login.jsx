@@ -8,15 +8,13 @@ import "./formStyle.scss"
 //componentsImports
 import {signIn} from "../../Redux/authReducer";
 import {connect} from "react-redux";
-import {FormElement} from "../common/FormControl/FormControl";
+import {FormElement} from "../common/FormControl/FormControlReduxForm";
 import {maxLength, required, minLength} from "../common/FormControl/validators";
 import {Redirect} from "react-router-dom";
 import Particles from "../common/Particles/Particles";
 //assetsImports
 import emailIcon from "../../assets/images/icons/email.png"
 import passIcon from "../../assets/images/icons/lock.png"
-
-
 
 
 //validators
@@ -33,20 +31,23 @@ const LoginForm = (props) => {
 
 			<form onSubmit={props.handleSubmit} id="signin">
 				<div className="form-title">Sign in</div>
+
 				<div className="input-field">
 					<Field
 						classIcon={'email-icon'} labelName={'Email'}
 						id={'email'} iconSrc={emailIcon}
-						validate={[required, maxLength20]} component={Input}
+						validate={[required]} component={Input}
 						type={'email'} name={'email'}
 					/>
 				</div>
+
 				<div className="input-field">
 					<Field  validate={[required, maxLength20, minLength6]} component={Input}
 									type={'password'} classIcon={'pass-icon'} labelName={'Password'}
 									id={'password'} iconSrc={passIcon} name={'password'}
 					/>
 				</div>
+
 				<button className="login">Login</button>
 				{props.error && <div className={formCtrl.formError}>{props.error}</div>}
 				{props.captchaUrl && <div className={s.captchaBlock}>
@@ -67,7 +68,6 @@ const LoginReduxForm =  reduxForm({
 const Login = (props) => {
 	const onSubmit = (formData) => {
 		props.signIn(formData)
-		console.log(formData)
 	}
 	if (props.isAuth) return <Redirect to={`/profile/${props.ownId}`}/>
 	return (
