@@ -11,6 +11,7 @@ import {initializeApp} from "./Redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import Profile from "./components/Profile/Profile"
 import PhotoModal from "./components/Profile/MyProfile/#myProfileCommon/ChangerPhotoModal/PhotoModal";
+import {getPhoto} from "./Redux/profileReducer";
 
 
 class App extends React.Component {
@@ -20,6 +21,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.initializeApp()
+      .then(()=> this.props.isAuth && this.props.getPhoto(this.props.ownId))
   }
 
   toggleIsPhotoModal = () => {
@@ -29,6 +31,8 @@ class App extends React.Component {
 
   render() {
     if (!this.props.initialized) return <Preloader/>
+    if (this.props.isAuth && !this.props.ownPhoto) return <Preloader/>
+    //без этого условия header ava моргает из-за того, что сервер долго думает, ставится дефолт фото, затем заменяется
       return (
         <div className="app">
         <div className="app-wrapper">
@@ -58,9 +62,10 @@ const mapStateToProps = (state) => {
   return{
     initialized: state.appReducer.initialized,
     ownId: state.authReducer.id,
-    isAuth: state.authReducer.isAuth
+    isAuth: state.authReducer.isAuth,
+    ownPhoto: state.profileReducer.ownPhoto,
   }
 }
 
-export default  connect(mapStateToProps,{initializeApp})(App)
+export default  connect(mapStateToProps,{initializeApp, getPhoto})(App)
 

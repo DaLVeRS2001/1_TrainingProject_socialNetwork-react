@@ -1,4 +1,5 @@
 import {getAuthData} from "./authReducer";
+import {getPhoto} from "./profileReducer";
 
 
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS'
@@ -33,6 +34,8 @@ export const initializeApp = () => (dispatch) => {
 	Promise.all([promise]).then(()=> {
 		dispatch(initializedSuccess())
 	})
+
+	return promise
 }
 
 

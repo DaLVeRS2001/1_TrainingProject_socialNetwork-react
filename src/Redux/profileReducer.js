@@ -1,5 +1,6 @@
 import profileApi from "../api/profileApi";
 import {reset} from "redux-form";
+import LoginHookFormVersion from "../components/login/LoginHookFormVersion";
 
 const ADD_POST = 'ADD-POST',
 	SET_USER_PROFILE = 'SET_USER_PROFILE',
@@ -58,8 +59,10 @@ const profileReducer = (state = initialState, action) => {
 				status: action.status
 			}
 		case UPDATE_PHOTO:
-		{
-			console.log('puk')}
+		return {
+			...state,
+			ownPhoto: action.ownPhoto
+		}
 
 		default:
 			return state;
@@ -110,12 +113,22 @@ export const addPost = (newPostText) => (dispatch) => {
 			})
 	},
 
-	updatePhoto = (photo) => (dispatch) => {
+	updatePhoto = (photo, ownId) => (dispatch) => {
 	  profileApi.updatePhoto(photo)
 		.then((response)=> {
-				dispatch(setOwnPhoto(response.data.small))
+			if(response.resultCode === 0){
+				dispatch(setOwnPhoto(response.data.photos.small))
+				dispatch(getProfile(ownId))
+			}
 		})
+	},
+	getPhoto = (ownId) => (dispatch) => {
+		return profileApi.getUserProfile(ownId)
+			.then(profile => {
+				dispatch(setOwnPhoto(profile.photos.small))
+			})
 	}
+
 
 
 

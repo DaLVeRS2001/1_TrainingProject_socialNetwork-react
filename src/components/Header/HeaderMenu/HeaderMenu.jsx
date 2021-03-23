@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import s from './HeaderMenu.module.scss'
 import userImg from "../../../assets/images/userImage.png"
 import {createRef} from "react/cjs/react.production.min";
@@ -7,8 +7,10 @@ import {NavLink} from "react-router-dom";
 
 
 const HeaderMenu = (props) => {
+	useEffect(()=> {
+		props.isAuth && props.getPhoto(props.ownId)
+	}, [props.isAuth])
 	const menuRef = createRef()
-
 	const toggleHidden = () => {
 		menuRef.current.hidden = !menuRef.current.hidden
 	}

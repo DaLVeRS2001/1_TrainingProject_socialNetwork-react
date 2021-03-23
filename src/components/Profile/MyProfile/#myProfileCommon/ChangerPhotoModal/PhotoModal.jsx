@@ -1,32 +1,28 @@
 import s from './PhotoModal.module.scss'
-import {Field, reduxForm} from "redux-form";
-import {FormElement} from "../../../../common/FormControl/FormControlReduxForm";
 import {updatePhoto} from "../../../../../Redux/profileReducer";
 import {connect} from "react-redux";
+import {useForm} from "react-hook-form";
 
-
-
-const Input = FormElement("input")
 
 
 const PhotoModalForm = (props) => {
-	return <form onChange={props.handleChange} >
-		<Field id={'uploader'} hidden={true} accept='.jpg, .png, .jpeg'
-					 type="file" name={'filePhoto'} component={Input}/>
+	const {register, handleSubmit} = useForm()
+
+	return <form onChange={handleSubmit(props.onChange)} >
+
+		<input ref={register} id={'uploader'} hidden={true} accept='.jpg, .png, .jpeg'  type="file" name={'filePhoto'}/>
 		<label  htmlFor='uploader'><span className={s.button}>Select photo</span></label>
 	</form>
 }
 
-const PhotoModalReduxForm = reduxForm({
-	form: 'photoModal'
-})(PhotoModalForm)
+
 
 const PhotoModal = (props) => {
 	const onChange = (imgFile) => {
 		let formData = new FormData();
-		console.log(imgFile)
 		formData.append("image", imgFile.filePhoto[0]);
-		props.updatePhoto(formData);
+		props.updatePhoto(formData, props.ownId);
+		props.toggleIsPhotoModal()
 	}
 
 	return (
@@ -37,7 +33,7 @@ const PhotoModal = (props) => {
 					</div>
 					<div className={s.main}>
 						<span>You can upload an image in JPG, JPEG, or PNG format.</span>
-						<PhotoModalReduxForm onChange={onChange}/>
+						<PhotoModalForm onChange={onChange}/>
 					</div>
 
 					<div className={s.footer}>''</div>
@@ -49,7 +45,9 @@ const PhotoModal = (props) => {
 
 let mapStateToProps = (state) => {
 	return {
-		ownPhoto: state.profileReducer.ownPhoto
+		ownPhoto: state.profileReducer.ownPhoto,
+		isAuth: state.authReducer.isAuth,
+		ownId: state.authReducer.id,
 	}
 }
 

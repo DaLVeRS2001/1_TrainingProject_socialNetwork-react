@@ -3,7 +3,7 @@ import Header from "./Header";
 import {connect} from "react-redux";
 import {signOut} from "../../Redux/authReducer";
 import {compose} from "redux";
-import {updatePhoto} from "../../Redux/profileReducer";
+import {getPhoto} from "../../Redux/profileReducer";
 
 class HeaderContainer extends React.Component{
 
@@ -29,7 +29,7 @@ const mapStateToProps = (state) => {
 }
 
 export default compose(
-	connect(mapStateToProps, {signOut, updatePhoto}),
+	connect(mapStateToProps, {signOut, getPhoto}),
 )(HeaderContainer)
 
 

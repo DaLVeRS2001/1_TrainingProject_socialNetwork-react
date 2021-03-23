@@ -2,19 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e14d9647-6c38-45f7-978e-c49445a9da70" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Header/HeaderMenu/HeaderMenu.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Header/HeaderMenu/HeaderMenu.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/appReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/appReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/authReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/profileReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/profileReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/FormControl/FormControlReduxForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/FormControl/FormControlReduxForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/Login.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Login.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderMenu/HeaderMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderMenu/HeaderMenu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyProfile/#myProfileCommon/ChangerPhotoModal/PhotoModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyProfile/#myProfileCommon/ChangerPhotoModal/PhotoModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyProfile/MyProfileContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyProfile/MyProfileContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/login/LoginHookFormVersion.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/LoginHookFormVersion.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/formStyle.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/formStyle.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +136,8 @@
       <workItem from="1615890491215" duration="9428000" />
       <workItem from="1616246806526" duration="756000" />
       <workItem from="1616338078063" duration="7027000" />
-      <workItem from="1616408164812" duration="25894000" />
+      <workItem from="1616408164812" duration="26279000" />
+      <workItem from="1616505733774" duration="11560000" />
     </task>
     <servers />
   </component>

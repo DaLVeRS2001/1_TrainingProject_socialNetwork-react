@@ -55,7 +55,7 @@ export const getAuthData = () => (dispatch) => {
 				if (response.resultCode === 0) {
 					let {id, email, login} = response.data
 					dispatch(setAuthUserData(id, email, login, true))
-					//dispatch(updatePhoto())
+					dispatch(updatePhoto())
 				}
 			})
 	},

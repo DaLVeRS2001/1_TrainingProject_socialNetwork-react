@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
-import {getProfile, getStatus, updateStatus} from "../../../Redux/profileReducer";
+import {getProfile, getStatus, updatePhoto, updateStatus} from "../../../Redux/profileReducer";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import MyProfile from "./MyProfile";
