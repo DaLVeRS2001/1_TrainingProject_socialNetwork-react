@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import s from './HeaderMenu.module.scss'
 import userImg from "../../../assets/images/userImage.png"
 import {createRef} from "react/cjs/react.production.min";
@@ -29,10 +29,12 @@ const HeaderMenu = (props) => {
 					{props.login}
 				</NavLink><hr/>
 
+				<NavLink to={'/setting'}>
+					<div  className={s.menuShownMain}>
+						Setting
+					</div>
+				</NavLink><hr/>
 
-				<div  className={s.menuShownMain}>
-					<NavLink to={'/setting'}>Setting</NavLink>
-				</div><hr/>
 
 				<div onClick={props.onLogout} className={s.menuShownFooter}>
 					Sign out

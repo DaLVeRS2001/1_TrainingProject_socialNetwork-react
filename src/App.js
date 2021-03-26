@@ -1,17 +1,18 @@
 import './App.css';
 import React from 'react';
 import Sidebar from "./components/SideBar/SideBar";
-import {Route} from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import LoginPage from "./components/login/Login";
+import LoginPage from "./components/login/LoginHookFormVersion";
 import {connect} from "react-redux";
 import {initializeApp} from "./Redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import Profile from "./components/Profile/Profile"
 import PhotoModal from "./components/Profile/MyProfile/#myProfileCommon/ChangerPhotoModal/PhotoModal";
 import {getPhoto} from "./Redux/profileReducer";
+import SettingPage from "./components/Setting/Setting";
 
 
 class App extends React.Component {
@@ -21,7 +22,9 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.initializeApp()
-      .then(()=> this.props.isAuth && this.props.getPhoto(this.props.ownId))
+      .then(()=> {
+          this.props.isAuth && this.props.getPhoto(this.props.ownId)
+      })
   }
 
   toggleIsPhotoModal = () => {
@@ -31,7 +34,7 @@ class App extends React.Component {
 
   render() {
     if (!this.props.initialized) return <Preloader/>
-    if (this.props.isAuth && !this.props.ownPhoto) return <Preloader/>
+    if(this.props.isAuth && !this.props.ownPhoto) return <Preloader/>
     //без этого условия header ava моргает из-за того, что сервер долго думает, ставится дефолт фото, затем заменяется
       return (
         <div className="app">
@@ -47,6 +50,7 @@ class App extends React.Component {
             <Route path='/dialogs' render={() => <DialogsContainer/>}/>
             <Route path='/users' render={() => <UsersContainer/>}/>
             <Route path='/login' render={() => <LoginPage/>}/>
+            <Route path='/setting' render={()=> <SettingPage/>}/>
           </div>
         </div>
 

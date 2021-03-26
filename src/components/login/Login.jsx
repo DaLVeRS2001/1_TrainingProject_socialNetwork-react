@@ -15,6 +15,7 @@ import Particles from "../common/Particles/Particles";
 //assetsImports
 import emailIcon from "../../assets/images/icons/email.png"
 import passIcon from "../../assets/images/icons/lock.png"
+import {getPhoto} from "../../Redux/profileReducer";
 
 
 //validators
@@ -71,7 +72,6 @@ const Login = (props) => {
 	}
 	if (props.isAuth) return <Redirect to={`/profile/${props.ownId}`}/>
 	return (
-
 		<div	className={s.login}>
 		<LoginReduxForm captchaUrl={props.captchaUrl}  isAuth={props.isAuth} onSubmit={onSubmit}/>
 		</div>
@@ -88,4 +88,4 @@ let mapStateToProps = (state)=> {
 }
 
 
-export default connect(mapStateToProps , {signIn})(Login)
+export default connect(mapStateToProps , {signIn, getPhoto})(Login)

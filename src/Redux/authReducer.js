@@ -1,6 +1,5 @@
 import authApi from "../api/authApi";
 import {reset, stopSubmit} from "redux-form";
-import {updatePhoto} from "./profileReducer";
 
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA',
 	ADD_CAPTCHA = 'ADD_CAPTCHA',
@@ -55,13 +54,13 @@ export const getAuthData = () => (dispatch) => {
 				if (response.resultCode === 0) {
 					let {id, email, login} = response.data
 					dispatch(setAuthUserData(id, email, login, true))
-					dispatch(updatePhoto())
+					//dispatch(updatePhoto())
 				}
 			})
 	},
 
 	signIn = (formData) => (dispatch) => {
-		authApi.login(formData)
+		return authApi.login(formData)
 			.then((response) => {
 				dispatch(reset('Login'))
 				if (response.resultCode === 0) {

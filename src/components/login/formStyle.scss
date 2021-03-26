@@ -1,3 +1,11 @@
+//@include sizes($w, $h)
+@mixin sizes($w, $h){
+  width: $w;
+  height: $h;
+}
+
+
+
 .form-Page {
   display: flex;
   justify-content: center;
@@ -146,13 +154,10 @@
     }
 
     .email-icon {
-      width: 25px;
-      height: 28px;
+      @include sizes(25px, 28px)
     }
-
     .pass-icon {
-      width: 19px;
-      height: 23px;
+      @include sizes(19px, 23px)
     }
   }
 }
