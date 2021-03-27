@@ -90,10 +90,12 @@ export const addPost = (newPostText) => (dispatch) => {
 	getProfile = (userId) => (dispatch) => {
 			dispatch(clearProfile())
 			dispatch(toggleFetching(true))
-			 profileApi.getUserProfile(userId)
+			return profileApi.getUserProfile(userId)
 				.then(profile => {
 					dispatch(setUserProfile(profile))
 					dispatch(toggleFetching(false))
+
+					return profile
 				})
 	},
 

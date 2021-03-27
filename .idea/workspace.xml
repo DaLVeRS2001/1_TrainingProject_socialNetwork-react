@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e14d9647-6c38-45f7-978e-c49445a9da70" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Redux/settingReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Setting/Setting.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Setting/Setting.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/authReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderMenu/HeaderMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderMenu/HeaderMenu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/profileReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/profileReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyProfile/#myProfileCommon/ChangerPhotoModal/PhotoModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyProfile/#myProfileCommon/ChangerPhotoModal/PhotoModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyProfile/MyProfileInfo/MyProfileInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyProfile/MyProfileInfo/MyProfileInfo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Setting/Setting.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Setting/Setting.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Setting/Setting.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Setting/Setting.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/common/FormControl/FieldHookForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/FormControl/FieldHookForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/FormControl/FormControlReduxForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/FormControl/FormControlReduxForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/LoginHookFormVersion.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/LoginHookFormVersion.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/formStyle.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/formStyle.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/FormControl/FormControl.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/FormControl/FormControl.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,9 +32,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1oQRkjTGIqFhPw9c8s5AvUfhhtW" />
   <component name="ProjectViewState">
@@ -145,7 +138,8 @@
       <workItem from="1616505733774" duration="11560000" />
       <workItem from="1616610138008" duration="609000" />
       <workItem from="1616670439822" duration="15896000" />
-      <workItem from="1616776166347" duration="13764000" />
+      <workItem from="1616776166347" duration="13862000" />
+      <workItem from="1616848713265" duration="29141000" />
     </task>
     <servers />
   </component>

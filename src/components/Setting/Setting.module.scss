@@ -1,15 +1,171 @@
-.settingPage{
 
+
+.settingPage {
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 600;
+  span{
+    display: flex;
+    margin-bottom: 3px;
+    margin-top: 10px;
+  }
+  input, textarea{
+    border-radius: 5px;
+    resize: none;
+  }
+  header{
+   border-bottom: 2px solid white;
+    border-top: 2px solid white;
+    border-radius: 22px;
+    padding: 0 5px;
+    margin-bottom: 15px;
+  }
+  .setting{
+    .titles{
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .nameBlock{
+      margin: 0 0 15px 5px;
+      .nameField{
+        display: flex;
+        span{
+          font-size: 16px;
+          margin: 0 10px 0 0;
+          font-weight: bold;
+        }
+        input{
+          margin-top: 6px;
+        }
+      }
+    }//nameField
+
+    .aboutMeBlock{
+      margin: 15px 0 15px 5px;
+      .aboutMeField{
+      display: flex;
+        span{
+          font-size: 16px;
+          margin: 0 10px 0 0;
+          font-weight: bold;
+          align-self: flex-start;
+        }
+        textarea{
+          margin-top: 7px;
+         height: 50px;
+          width: 250px;
+        }
+      }//aboutMeField
+    }//aboutMeBlock
+
+    .contactsBlock{
+      margin: 0 0 15px 5px;
+      display: flex;
+      .contacts {
+        margin: 5px 0 0 10px;
+        .wrapper{
+          position: relative;
+          .elementPrefix{
+            text-align: center;
+            background: red;
+            bottom: 4px;
+            padding: 0 3px;
+            position: absolute;
+            color: black;
+            border-radius: 5px;
+            font-size: 13px;
+          }//elementPrefix
+          .contactField{
+            input{
+              font-family: Roboto, sans-serif;
+              font-size: 13px;
+            }
+          }//contactField
+        }//wrapper
+
+      } //contacts
+    } //contactsBlock
+    .jobBlock{
+      display: flex;
+      margin: 0 0 15px 5px;
+      .jobFields{
+        margin: 5px 0 0 10px;
+        .radioFields{
+          display: flex;
+          label{
+            margin-right: 15px;
+            cursor: pointer;
+          }
+          .isJobField{
+          }//isJobField
+        }//radioFields
+        .jobInfoField{}//jobInfoField
+      }//jobFields
+    }//jobBlock
+
+
+
+
+    .buttonBlock{
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      button {
+        width: 200px;
+        height: 40px;
+        font-size: 12px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, .4);
+        background: none;
+        font-weight: 700;
+        font-family: 'Roboto', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      button:before, button:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        box-sizing: border-box;
+      }
+      button:before {
+        bottom: 0;
+        left: 0;
+        border-left: 1px solid white;
+        border-top: 1px solid white;
+        transition: opacity 0s ease .4s, width .1s ease .2s, height .1s ease .3s;
+      }
+      button:after {
+        top: 0;
+        right: 0;
+        border-right: 1px solid white;
+        border-bottom: 1px solid white;
+        transition: opacity 0s ease .2s, width .1s ease ,height .1s ease .1s;
+      }
+      button:hover:before,
+      button:hover:after {
+        height: 100%;
+        width: 100%;
+        opacity: 1;
+      }
+      button:hover:before {
+        transition: opacity 0s ease 0s, height .1s ease, width .1s ease .1s;
+      }
+      button:hover:after {
+        transition: opacity 0s ease .2s, height .1s ease .2s, width .1s ease .3s;
+      }
+      button:hover {
+        background: rgba(255, 255, 255, .2);
+      }
+    }
+  }//setting
 }
 
-.contactsBlock{
-  display: flex;
 
-}
-.contactField{
-  display: flex;
-}
-
-.contactTitle{
-  margin-right: 10px;
-}

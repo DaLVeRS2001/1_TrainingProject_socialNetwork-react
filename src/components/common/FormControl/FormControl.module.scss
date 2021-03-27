@@ -1,9 +1,10 @@
+
+
 .formControl {
   &.error {
     input, textarea {
       border: 2px solid red;
     }
-
     span {
       position: absolute;
       bottom: -35px;

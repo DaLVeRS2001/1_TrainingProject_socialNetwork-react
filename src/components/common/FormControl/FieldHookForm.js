@@ -1,8 +1,9 @@
 import React from "react";
 import formCtrl from "./FormControl.module.scss";
 
-export const FieldHookForm = (Element) =>  ({useForm, setting, elemProps, forOther, validators, ...props}) => {
+export const FieldHookForm = (Element) =>  ({useForm, elemProps, forOther, validators, parentBoxClassName, ...props},) => {
 	const inputNames = ['email', 'password']
+
 	let hasError = useForm.errors[elemProps.name]
 	let test = (elem, part) => {
 		if (elem) return elem[part]
@@ -10,10 +11,9 @@ export const FieldHookForm = (Element) =>  ({useForm, setting, elemProps, forOth
 
 	return(
 		<div  className={formCtrl.formControl + ' ' + ( hasError && formCtrl.error)}>
-			<div>
+			<div className={parentBoxClassName}>
 				{test(forOther, 'upperSpan')?.is && <span>{forOther.upperSpan.text}</span>}
-
-				<Element {...elemProps} ref={useForm.register(validators&&validators)} {...props}/>
+				<Element  {...elemProps} ref={useForm.register(validators&&validators)} {...props}/>
 
 				{inputNames.map((t)=> {
 					if(elemProps.name === t) {
@@ -42,13 +42,17 @@ export const FieldHookForm = (Element) =>  ({useForm, setting, elemProps, forOth
 //           <div className="input-field">
 // 						<Input
 // 							useForm={{register, errors}}
-// 							elemProps={{placeholder: '', id: 'email', name: 'email', type: 'text'}}
+// 							elemProps={{
+// 							  placeholder: '', id: 'email', name: 'email', type: 'text',
+// 							  className: 'Element class'
+// 							}}
 // 							forOther={{
 // 							  iconSrc: 'path to inner field icon',
 // 							  classIcon: 'Icon class for inner field',
 // 							  labelName: 'label name',
 // 							  upperSpan:{is: 'boolean', text: 'spanText'}           //span over the element
 // 							}}
-// 							validators={{required: 'Field is required'/*...*/}}
+//              parentBoxClassName={'the class of the main parent field'}
+//              validators={{required: 'Field is required'/*...*/}}
 // 						/>
 // 					</div>

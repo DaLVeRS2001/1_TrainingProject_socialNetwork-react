@@ -1,5 +1,5 @@
 import s from './PhotoModal.module.scss'
-import {updatePhoto} from "../../../../../Redux/profileReducer";
+import {getProfile, updatePhoto} from "../../../../../Redux/profileReducer";
 import {connect} from "react-redux";
 import {useForm} from "react-hook-form";
 
@@ -51,4 +51,4 @@ let mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps, {updatePhoto})(PhotoModal)
+export default connect(mapStateToProps, {updatePhoto, getProfile})(PhotoModal)

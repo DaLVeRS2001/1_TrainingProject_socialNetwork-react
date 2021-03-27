@@ -5,8 +5,7 @@ import Preloader from "../../../common/Preloader/Preloader";
 import MyProfileStatus from "./MyProfileStatus";
 import JobDescription from "../../#pofileCommon/JobDescription/JobDescription";
 import ContactsMenu from "../../#pofileCommon/ContactsMenu/ContactsMenu";
-import useOnClickOutside from "../../../common/useOnClickOutside/useOnClickOutside";
-import PhotoModal from "../#myProfileCommon/ChangerPhotoModal/PhotoModal";
+
 
 
 const MyProfileInfo = (props) => {
