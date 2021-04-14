@@ -5,7 +5,7 @@ import {Redirect, Route} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import LoginPage from "./components/login/LoginHookFormVersion";
+import LoginPage from "./components/login/Login";
 import {connect} from "react-redux";
 import {initializeApp} from "./Redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
@@ -22,9 +22,10 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.initializeApp()
-      .then(()=> {
-          this.props.isAuth && this.props.getPhoto(this.props.ownId)
-      })
+      // .then(()=> {
+      //     this.props.isAuth && this.props.getPhoto(this.props.ownId)
+      // })
+    console.log(this.props.ownId)
   }
 
   toggleIsPhotoModal = () => {
@@ -35,7 +36,7 @@ class App extends React.Component {
   render() {
     if (!this.props.initialized) return <Preloader/>
     if(this.props.isAuth && !this.props.ownPhoto) return <Preloader/>
-    //без этого условия header ava моргает из-за того, что сервер долго думает, ставится дефолт фото, затем заменяется
+
       return (
         <div className="app">
         <div className="app-wrapper">

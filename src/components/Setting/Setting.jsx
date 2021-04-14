@@ -5,10 +5,10 @@ import {useForm} from "react-hook-form";
 import {Redirect} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import Preloader from "../common/Preloader/Preloader";
-import {getProfile} from "../../Redux/profileReducer";
+import {getProfile, updateProfSetting} from "../../Redux/profileReducer";
 
 
-const TextArea = FieldHookForm('textarea')
+const Textarea = FieldHookForm('Textarea')
 const Input = FieldHookForm('Input')
 
 const Setting = (props) => {
@@ -16,29 +16,41 @@ const Setting = (props) => {
 	const contactNames = ['facebook', 'github', 'instagram', 'twitter', 'vk', 'youtube']
 	const {register, errors, handleSubmit} = useForm()
 
-	let [aboutMeText, changeAboutMe] = useState()
-	let [jobInfoText, changeJobInfo] = useState()
 
 	useEffect(()=> {
 		props.getProfile(props.ownId)
-			.then((profile)=> {
-				changeAboutMe(profile.aboutMe)
-				changeJobInfo(profile.lookingForAJobDescription)
-			})
 	}, [props.isAuth])
 
 	if(!props.isAuth)  return <Redirect to={'/login'}/>
 	if(!props.profile) return <Preloader/>
 
-	let onChangeAboutMeField = (e) => {
-		changeAboutMe(e.currentTarget.value)
-	}
-	let onChangeJobInfoField = (e) => {
-		changeJobInfo(e.currentTarget.value)
+	let toIf = (el) => {
+		return !el?null:el
 	}
 
 	let onSubmit = (data) => {
-		console.log(data)
+		let settingData = {
+			"aboutMe": data.aboutMe,
+			"contacts": {
+				facebook: toIf(data.facebook),
+				github: toIf(data.github),
+				instagram: toIf(data.instagram),
+				mainLink: null,
+				twitter: toIf(data.twitter),
+				vk: toIf(data.vk),
+				website: null,
+				youtube: toIf(data.youtube),
+			},
+			"lookingForAJob": data.isJob === 'true' ,
+			"lookingForAJobDescription": data.jobInfo,
+			"fullName": data.fullName
+		}
+
+		props.updateProfSetting(settingData, props.ownId)
+		//console.log(settingData)
+		//console.log(data)
+		// var myValue = 'true'
+		// console.log(myValue === 'true')
 	}
 
 	return (
@@ -51,21 +63,21 @@ const Setting = (props) => {
 
 				<div className={s.nameBlock}>
 					<Input
-						useForm={{register, errors}} elemProps={{id: 'nameField', name: 'name', value: prof.fullName}}
+						useForm={{register, errors}} elemProps={{id: 'nameField', name: 'fullName', value: prof.fullName}}
 						forOther={{upperSpan: {is: true, text: 'Name: '}}} parentBoxClassName={s.nameField}
 						validators={{
 							required: 'Field is required',
-							maxLength: {value: 30, message: 'Max length is 30'}
+							maxLength: {value: 50, message: 'Max length is 50'}
 						}}
 
 					/>
 				</div><hr/>
 
 				<div  className={s.aboutMeBlock}>
-					<TextArea
-						useForm={{register, errors}} elemProps={{id: 'aboutMeField', name: 'aboutMe',value: aboutMeText}}
+					<Textarea
+						useForm={{register, errors}} elemProps={{id: 'aboutMeField', name: 'aboutMe', value: prof.aboutMe}}
 						forOther={{upperSpan: {is: true, text: 'About me: '}}}
-						parentBoxClassName={s.aboutMeField} onChange={onChangeAboutMeField}
+						parentBoxClassName={s.aboutMeField}
 						validators={{
 							required: 'Field is required',
 							maxLength: {value: 500, message: 'Max length is 500'}
@@ -78,49 +90,52 @@ const Setting = (props) => {
 					<div className={s.contacts}>
 
 						{contactNames.map((contactName)=> {
-							return (
+							return  (
 								<div className={s.wrapper}>
 									<Input
-										useForm={{register, errors}}
+										useForm={{register, errors}} forOther={{upperSpan: {is: true, text: contactName + ': '}}}
 										elemProps={{
-											id: 'contactField', name: 'contact', className: 'contact', value: prof.contacts[contactName],
+											id: 'contactField', name: [contactName] , className: 'contact', value: prof.contacts[contactName],
 											placeholder: contactName+'.com/'
 										}}
-										forOther={{upperSpan: {is: true, text: contactName + ': '}}} parentBoxClassName={s.contactField}
+
 										validators={{
-											pattern: {value: new RegExp(contactName+'.com/'+'\\w+'), message: `Field must start with: ${contactName}.com/`}
+											pattern: {
+												value: new RegExp('^'+contactName +'.com/'+'\\w+.*'),
+												message: `Field must start with: ${contactName}.com/...`}
 										}}
 									/>
 								</div>
 							)
 						})}
+
+
 					</div>
 				</div><hr/>
 
 				<div className={s.jobBlock}>
 					<span className={s.titles} >Job Info: </span>
-					<div className={s.jobFields}>
+					<div className={s.jobInner}>
 						<span>Looking for a job: </span>
-						<div className={s.radioFields}>
+						<div className={s.radios}>
 							<Input
-								useForm={{register, errors}} elemProps={{id: 'isJobFieldFirst', name: 'isJob', type: 'radio'}}
-								parentBoxClassName={s.isJobField}
+								useForm={{register, errors}} checked={prof.lookingForAJob && true}
+								elemProps={{id: 'isJobFieldFirst', name: 'isJob', type: 'radio', value: true}}
 							/>
 							<label htmlFor="isJobFieldFirst">Yes</label>
 							<Input
-								useForm={{register, errors}} elemProps={{id: 'isJobFieldSecond', name: 'isJob', type: 'radio'}}
-								parentBoxClassName={s.isJobField}
+								useForm={{register, errors}} checked={!prof.lookingForAJob && true}
+								elemProps={{id: 'isJobFieldSecond', name: 'isJob', type: 'radio', value: false}}
 							/>
 							<label htmlFor="isJobFieldSecond">No</label>
 						</div>
 
-							<TextArea
-							useForm={{register, errors}} elemProps={{id: 'jobInfoField', name: 'jobInfo', value: jobInfoText}}
-							forOther={{upperSpan: {is: true, text: 'Job Info: '}}} parentBoxClassName={s.jobInfoField}
+							<Textarea
+							useForm={{register, errors}} forOther={{upperSpan: {is: true, text: 'Job Info: '}}}
+							elemProps={{id: 'jobInfoField', name: 'jobInfo',  value: prof.lookingForAJobDescription}}
 							validators={{
 								maxLength: {value: 100, message: 'Max length is 100'}
 							}}
-							onChange={onChangeJobInfoField}
 						/>
 					</div>
 				</div><hr/>
@@ -140,4 +155,4 @@ let mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps, {getProfile})(Setting)
+export default connect(mapStateToProps, {getProfile, updateProfSetting})(Setting)

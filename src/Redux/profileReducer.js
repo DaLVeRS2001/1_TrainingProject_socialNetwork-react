@@ -129,9 +129,20 @@ export const addPost = (newPostText) => (dispatch) => {
 			.then(profile => {
 				dispatch(setOwnPhoto(profile.photos.small))
 			})
+	},
+	updateProfSetting = (setting, ownId) => (dispatch) => {
+		profileApi.updateSetting(setting)
+			.then((response) => {
+				if (response.resultCode === 0){
+					dispatch(getProfile(ownId))
+					console.log(setting)
+					console.log(response)
+				}else{
+					console.log(setting)
+					console.log(response)
+				}
+			})
 	}
-
-
 
 
 export default profileReducer

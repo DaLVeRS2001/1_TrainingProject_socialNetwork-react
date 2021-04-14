@@ -22,6 +22,7 @@ const PhotoModal = (props) => {
 		let formData = new FormData();
 		formData.append("image", imgFile.filePhoto[0]);
 		props.updatePhoto(formData, props.ownId);
+		console.log(imgFile)
 		props.toggleIsPhotoModal()
 	}
 

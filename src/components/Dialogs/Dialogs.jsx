@@ -18,54 +18,50 @@ const DialogReduxForm = reduxForm({
 	form: 'DialogMessageForm'
 })(DialogForm)
 
+class Dialogs extends React.Component {
 
-
-const Dialogs = (props) => {
-	const dp = props.dialogsPage
-
-	const sendMessage = (values) => {
-		props.sendMessage(values.textarea)
+	componentDidMount() {
+		console.log('kek')
 	}
 
-	let dialogItems =
-		dp.dialogsData.map(dialog =>
-			<Dialog
-				id={dialog.id}
-				userName={dialog.userName}
-				key={dialog.id}
-			/>
-		)
-
-	let messageItems =
-		dp.messagesData.map(message =>
-			<Message
-				id={message.id}
-				userMessage={message.userMessage}
-				key={message.id}
-			/>
-		)
-
-
-	return (
-		<div className={s.dialogs}>
-
-			<div className={s.dialogItems}>
-				{dialogItems}
-			</div>
-
-			<div className={s.messagesBlock}>
-				<div className={s.messages}>
-					{messageItems}
+	render() {
+		const dp = this.props.dialogsPage
+		const sendMessage = (values) => {
+			this.props.sendMessage(values.textarea)
+		}
+		let dialogItems =
+			dp.dialogsData.map(dialog =>
+				<Dialog
+					id={dialog.id}
+					userName={dialog.userName}
+					key={dialog.id}
+				/>
+			)
+		let messageItems =
+			dp.messagesData.map(message =>
+				<Message
+					id={message.id}
+					userMessage={message.userMessage}
+					key={message.id}
+				/>
+			)
+		return (
+			<div className={s.dialogs}>
+				<div className={s.dialogItems}>
+					{dialogItems}
 				</div>
-				<div className={s.newMessage}>
-					<DialogReduxForm onSubmit={sendMessage}/>
+				<div className={s.messagesBlock}>
+					<div className={s.messages}>
+						{messageItems}
+					</div>
+					<div className={s.newMessage}>
+						<DialogReduxForm onSubmit={sendMessage}/>
+					</div>
 				</div>
 			</div>
-
-		</div>
-	)
+		)
+	}
 }
-
 
 export default Dialogs
 

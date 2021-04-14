@@ -16,6 +16,10 @@ const profileApi = {
 	updatePhoto(photo){
 		return instance.put(`profile/photo`, photo)
 			.then(response=> response.data)
+	},
+	updateSetting(setting){
+		return instance.put('profile', setting)
+			.then(response=> response.data)
 	}
 }
 

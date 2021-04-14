@@ -4,12 +4,14 @@
   color: #FFFFFF;
   font-size: 13px;
   font-weight: 600;
+  font-family: Roboto, sans-serif;
   span{
     display: flex;
     margin-bottom: 3px;
     margin-top: 10px;
   }
   input, textarea{
+    color: black;
     border-radius: 5px;
     resize: none;
   }
@@ -27,37 +29,57 @@
     }
 
     .nameBlock{
-      margin: 0 0 15px 5px;
-      .nameField{
+      margin: 20px 0 26px 5px;
+
+      div[data-box='parentBox']{
         display: flex;
-        span{
+        span[data-span='upperSpan']{
           font-size: 16px;
           margin: 0 10px 0 0;
-          font-weight: bold;
+
         }
-        input{
-          margin-top: 6px;
-        }
-      }
-    }//nameField
+
+        div[data-box='elementBox'] {
+          input {
+            margin-top: 6px;
+          }
+          span[data-span='errSpan']{
+            font-size: 12px;
+            border-radius: 5px;
+            bottom: -25px;
+          }
+        }//elementBox
+      }//parentBox
+
+    }//nameBlock
+
 
     .aboutMeBlock{
-      margin: 15px 0 15px 5px;
-      .aboutMeField{
-      display: flex;
-        span{
+      margin: 20px 0 25px 5px;
+
+      div[data-box='parentBox']{
+        display: flex;
+        span[data-span='upperSpan']{
           font-size: 16px;
           margin: 0 10px 0 0;
-          font-weight: bold;
-          align-self: flex-start;
         }
-        textarea{
-          margin-top: 7px;
-         height: 50px;
-          width: 250px;
-        }
-      }//aboutMeField
+
+        div[data-box='elementBox'] {
+          textarea{
+            margin-top: 7px;
+            height: 50px;
+            width: 250px;
+          }
+          span[data-span='errSpan']{
+            font-size: 12px;
+            border-radius: 5px;
+            bottom: -23px;
+          }
+        }//elementBox
+      }//parentBox
+
     }//aboutMeBlock
+
 
     .contactsBlock{
       margin: 0 0 15px 5px;
@@ -66,42 +88,50 @@
         margin: 5px 0 0 10px;
         .wrapper{
           position: relative;
-          .elementPrefix{
-            text-align: center;
-            background: red;
-            bottom: 4px;
-            padding: 0 3px;
-            position: absolute;
-            color: black;
-            border-radius: 5px;
-            font-size: 13px;
-          }//elementPrefix
-          .contactField{
-            input{
-              font-family: Roboto, sans-serif;
-              font-size: 13px;
-            }
-          }//contactField
-        }//wrapper
 
+          div[data-box='parentBox']{
+            div[data-box='elementBox']{
+              width: 500px;
+              display: flex;
+              span[data-span='errSpan']{
+                font-size: 12px;
+                position: relative;
+                top: 0;
+                right: -10px;
+                margin: 0;
+                border-radius: 5px;
+              }
+            }//elementBox
+          }//parentBox
+
+        }//wrapper
       } //contacts
     } //contactsBlock
+
+
     .jobBlock{
       display: flex;
-      margin: 0 0 15px 5px;
-      .jobFields{
+      margin: 0 0 25px 5px;
+      .jobInner{
         margin: 5px 0 0 10px;
-        .radioFields{
+        .radios{
           display: flex;
           label{
             margin-right: 15px;
             cursor: pointer;
           }
-          .isJobField{
-          }//isJobField
-        }//radioFields
-        .jobInfoField{}//jobInfoField
-      }//jobFields
+        }//radios
+
+        div[data-box='elementBox']{
+          textarea{}
+          span[data-span='errSpan']{
+            font-size: 12px;
+            border-radius: 5px;
+            bottom: -23px;
+          }
+        }
+
+      }//jobInner
     }//jobBlock
 
 

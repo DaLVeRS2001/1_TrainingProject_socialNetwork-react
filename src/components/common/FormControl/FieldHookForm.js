@@ -1,7 +1,7 @@
 import React from "react";
 import formCtrl from "./FormControl.module.scss";
 
-export const FieldHookForm = (Element) =>  ({useForm, elemProps, forOther, validators, parentBoxClassName, ...props},) => {
+export const FieldHookForm =(Element) =>  ({useForm, elemProps, forOther, validators, parentBoxClassName, ...props},) => {
 	const inputNames = ['email', 'password']
 
 	let hasError = useForm.errors[elemProps.name]
@@ -11,9 +11,18 @@ export const FieldHookForm = (Element) =>  ({useForm, elemProps, forOther, valid
 
 	return(
 		<div  className={formCtrl.formControl + ' ' + ( hasError && formCtrl.error)}>
-			<div className={parentBoxClassName}>
-				{test(forOther, 'upperSpan')?.is && <span>{forOther.upperSpan.text}</span>}
-				<Element  {...elemProps} ref={useForm.register(validators&&validators)} {...props}/>
+			<div data-box='parentBox'>
+				{test(forOther, 'upperSpan')?.is && <span data-span='upperSpan'>{forOther.upperSpan.text}</span>}
+				<div data-box='elementBox'>
+					{Element === 'Textarea'
+						? <Element {...elemProps} ref={useForm.register(validators&&validators)} {...props}>
+							{elemProps?.value}
+						</Element>
+						: <Element {...elemProps} ref={useForm.register(validators&&validators)} {...props}/>
+					}
+
+					{useForm.errors[elemProps.name] && <span data-span='errSpan'>{useForm.errors[elemProps.name]?.message}</span>}
+				</div>
 
 				{inputNames.map((t)=> {
 					if(elemProps.name === t) {
@@ -23,9 +32,6 @@ export const FieldHookForm = (Element) =>  ({useForm, elemProps, forOther, valid
 						</>
 					}
 				})}
-
-
-				{useForm.errors[elemProps.name] && <span >{useForm.errors[elemProps.name]?.message}</span>}
 			</div>
 		</div>
 	)
@@ -52,7 +58,6 @@ export const FieldHookForm = (Element) =>  ({useForm, elemProps, forOther, valid
 // 							  labelName: 'label name',
 // 							  upperSpan:{is: 'boolean', text: 'spanText'}           //span over the element
 // 							}}
-//              parentBoxClassName={'the class of the main parent field'}
 //              validators={{required: 'Field is required'/*...*/}}
 // 						/>
 // 					</div>

@@ -1,5 +1,6 @@
 import authApi from "../api/authApi";
 import {reset, stopSubmit} from "redux-form";
+import {getPhoto} from "./profileReducer";
 
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA',
 	ADD_CAPTCHA = 'ADD_CAPTCHA',
