@@ -22,10 +22,9 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.initializeApp()
-      // .then(()=> {
-      //     this.props.isAuth && this.props.getPhoto(this.props.ownId)
-      // })
-    console.log(this.props.ownId)
+      .then(()=> {
+          this.props.isAuth && this.props.getPhoto(this.props.ownId)
+      })
   }
 
   toggleIsPhotoModal = () => {

@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e14d9647-6c38-45f7-978e-c49445a9da70" name="Default Changelist" comment="" />
+    <list default="true" id="e14d9647-6c38-45f7-978e-c49445a9da70" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/authReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderMenu/HeaderMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderMenu/HeaderMenu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/FormControl/FieldHookForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/FormControl/FieldHookForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/FormControl/FormControl.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/FormControl/FormControl.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/login/LoginHookFormVersion.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/LoginHookFormVersion.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +43,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Header/HeaderMenu" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../nextJsSpaWithSsr/next-app-sn" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -130,6 +140,7 @@
       <workItem from="1616670439822" duration="15896000" />
       <workItem from="1616776166347" duration="13862000" />
       <workItem from="1616848713265" duration="29141000" />
+      <workItem from="1618493845275" duration="5972000" />
     </task>
     <servers />
   </component>

@@ -7,9 +7,9 @@ import {NavLink} from "react-router-dom";
 
 
 const HeaderMenu = (props) => {
-	useEffect(()=> {
-		props.isAuth && props.getPhoto(props.ownId)
-	}, [props.isAuth])
+	// useEffect(()=> {
+	// 	props.isAuth && props.getPhoto(props.ownId)
+	// }, [props.isAuth])
 	const menuRef = createRef()
 	const toggleHidden = () => {
 		menuRef.current.hidden = !menuRef.current.hidden

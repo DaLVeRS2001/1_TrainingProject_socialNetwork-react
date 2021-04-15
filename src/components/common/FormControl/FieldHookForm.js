@@ -10,7 +10,7 @@ export const FieldHookForm =(Element) =>  ({useForm, elemProps, forOther, valida
 	}
 
 	return(
-		<div  className={formCtrl.formControl + ' ' + ( hasError && formCtrl.error)}>
+		<div  className={formCtrl.formControl + ' ' + ( hasError && formCtrl.errorHF)}>
 			<div data-box='parentBox'>
 				{test(forOther, 'upperSpan')?.is && <span data-span='upperSpan'>{forOther.upperSpan.text}</span>}
 				<div data-box='elementBox'>

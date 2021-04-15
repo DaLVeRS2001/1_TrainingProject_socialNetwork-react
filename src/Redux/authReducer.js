@@ -55,7 +55,7 @@ export const getAuthData = () => (dispatch) => {
 				if (response.resultCode === 0) {
 					let {id, email, login} = response.data
 					dispatch(setAuthUserData(id, email, login, true))
-					//dispatch(updatePhoto())
+					return id
 				}
 			})
 	},
@@ -66,6 +66,10 @@ export const getAuthData = () => (dispatch) => {
 				dispatch(reset('Login'))
 				if (response.resultCode === 0) {
 					dispatch(getAuthData())
+						.then((id)=> {
+							dispatch(getPhoto(id))
+						})
+
 					dispatch(clearCaptcha())
 				} else {
 					let message = response.messages.length > 0 ? response.messages[0] : 'some error'

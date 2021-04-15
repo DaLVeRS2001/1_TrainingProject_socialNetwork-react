@@ -15,7 +15,6 @@ import Particles from "../common/Particles/Particles";
 //assetsImports
 import emailIcon from "../../assets/images/icons/email.png"
 import passIcon from "../../assets/images/icons/lock.png"
-import {getPhoto} from "../../Redux/profileReducer";
 
 
 //validators
@@ -25,40 +24,40 @@ const Input = FormElement("input"),
 
 
 const LoginForm = (props) => {
-		return (
-			<>
-				<Particles/>
+	return (
+		<>
+			<Particles/>
 			<div className="form-Page">
 
-			<form onSubmit={props.handleSubmit} id="signin">
-				<div className="form-title">Sign in</div>
+				<form onSubmit={props.handleSubmit} id="signin">
+					<div className="form-title">Sign in</div>
 
-				<div className="input-field">
-					<Field
-						classIcon={'email-icon'} labelName={'Email'}
-						id={'email'} iconSrc={emailIcon}
-						validate={[required]} component={Input}
-						type={'text'} name={'email'}
-					/>
-				</div>
+					<div className="input-field">
+						<Field
+							classIcon={'email-icon'} labelName={'Email'}
+							id={'email'} iconSrc={emailIcon}
+							validate={[required]} component={Input}
+							type={'email'} name={'email'}
+						/>
+					</div>
 
-				<div className="input-field">
-					<Field  validate={[required, maxLength20, minLength6]} component={Input}
-									type={'password'} classIcon={'pass-icon'} labelName={'Password'}
-									id={'password'} iconSrc={passIcon} name={'password'}
-					/>
-				</div>
+					<div className="input-field">
+						<Field  validate={[required, maxLength20, minLength6]} component={Input}
+										type={'password'} classIcon={'pass-icon'} labelName={'Password'}
+										id={'password'} iconSrc={passIcon} name={'password'}
+						/>
+					</div>
 
-				<button className="login">Login</button>
-				{props.error && <div className={formCtrl.formError}>{props.error}</div>}
-				{props.captchaUrl && <div className={s.captchaBlock}>
-					<img src={props.captchaUrl} className={s.captchaImg} alt=""/>
-					<Field component={Input} type={'text'} placeholder={'Captcha'} name={'captcha'}/>
-				</div>}
-			</form>
+					<button className="login">Login</button>
+					{props.error && <div className={formCtrl.formError}>{props.error}</div>}
+					{props.captchaUrl && <div className={s.captchaBlock}>
+						<img src={props.captchaUrl} className={s.captchaImg} alt=""/>
+						<Field component={Input} type={'text'} placeholder={'Captcha'} name={'captcha'}/>
+					</div>}
+				</form>
 			</div>
-				</>
-		)
+		</>
+	)
 }
 
 const LoginReduxForm =  reduxForm({
@@ -72,8 +71,9 @@ const Login = (props) => {
 	}
 	if (props.isAuth) return <Redirect to={`/profile/${props.ownId}`}/>
 	return (
+
 		<div	className={s.login}>
-		<LoginReduxForm captchaUrl={props.captchaUrl}  isAuth={props.isAuth} onSubmit={onSubmit}/>
+			<LoginReduxForm captchaUrl={props.captchaUrl}  isAuth={props.isAuth} onSubmit={onSubmit}/>
 		</div>
 
 	)
@@ -88,4 +88,4 @@ let mapStateToProps = (state)=> {
 }
 
 
-export default connect(mapStateToProps , {signIn, getPhoto})(Login)
+export default connect(mapStateToProps , {signIn})(Login)

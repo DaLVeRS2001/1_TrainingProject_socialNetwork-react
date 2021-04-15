@@ -1,7 +1,16 @@
+@mixin spanProps($b){
+  position: absolute;
+  bottom: $b;
+  font:400 16px 'Roboto',sans-serif;
+  border: 1px solid red;
+  padding: 1px 4px 2px 4px;
+  border-radius: 7px;
+  color: red;
+}
 
 
 .formControl {
-  &.error {
+  &.errorHF {
     div[data-box='parentBox']{
 
       div[data-box='elementBox']{
@@ -9,20 +18,21 @@
         input, textarea {
           border: 2px solid red;
         }
-
-        span[data-span='errSpan'] {
-          position: absolute;
-          font:400 16px 'Roboto',sans-serif;
-          border: 1px solid red;
-          padding: 1px 4px 2px 4px;
-          border-radius: 7px;
-          color: red;
-        }
+        span[data-span='errSpan']{@include spanProps(null)}
       }//elementBox
 
     }//parentBox
+  }//errorHF
+
+  &.error{
+    input, textarea {
+      border: 2px solid red;
+    }
+    span {@include spanProps(-35px)}
   }//error
+
 }//formControl
+
 
 .formError{
   margin-bottom: 30px;
@@ -30,4 +40,20 @@
   color: red;
   width: 300px;
   text-align: center;
+}
+.formControl {
+  &.error {
+
+
+    span {
+      position: absolute;
+      bottom: -35px;
+      font:400 16px 'Roboto',sans-serif;
+      border: 1px solid red;
+      padding: 1px 4px 2px 4px;
+      border-radius: 7px;
+      color: red;
+    }
+  }
+
 }
